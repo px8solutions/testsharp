@@ -14,7 +14,7 @@
         </Counter>
         <Counter>
             <Name>column</Name>
-            <Value>69</Value>
+            <Value>70</Value>
             <Prefix>c</Prefix>
         </Counter>
         <Counter>
@@ -141,16 +141,7 @@
                     <Name>parent_id</Name>
                     <Type>int</Type>
                     <Description></Description>
-                    <Nullable>false</Nullable>
-                    <DefaultValue></DefaultValue>
-                    <CheckExpression></CheckExpression>
-                    <Properties/>
-                </Column>
-                <Column Id="c47">
-                    <Name>responses_id</Name>
-                    <Type>int</Type>
-                    <Description></Description>
-                    <Nullable>false</Nullable>
+                    <Nullable>true</Nullable>
                     <DefaultValue></DefaultValue>
                     <CheckExpression></CheckExpression>
                     <Properties/>
@@ -275,6 +266,15 @@
                 <Column Id="c44">
                     <Name>id</Name>
                     <Type>int</Type>
+                    <Description></Description>
+                    <Nullable>false</Nullable>
+                    <DefaultValue></DefaultValue>
+                    <CheckExpression></CheckExpression>
+                    <Properties/>
+                </Column>
+                <Column Id="c70">
+                    <Name>name</Name>
+                    <Type>text</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
                     <DefaultValue></DefaultValue>
@@ -538,7 +538,7 @@
                 </ReferenceColumn>
             </ReferenceColumns>
             <Cardinality>0..*</Cardinality>
-            <Mandatory>true</Mandatory>
+            <Mandatory>false</Mandatory>
             <OnUpdateAction>None</OnUpdateAction>
             <OnDeleteAction>None</OnDeleteAction>
             <Properties/>
@@ -590,9 +590,6 @@
             <FKRole></FKRole>
             <ReferenceColumns>
                 <ReferenceColumn>
-                    <FKColumn>c49</FKColumn>
-                </ReferenceColumn>
-                <ReferenceColumn>
                     <PKColumn>c55</PKColumn>
                     <FKColumn>c54</FKColumn>
                 </ReferenceColumn>
@@ -612,9 +609,6 @@
             <FKRole></FKRole>
             <ReferenceColumns>
                 <ReferenceColumn>
-                    <FKColumn>c49</FKColumn>
-                </ReferenceColumn>
-                <ReferenceColumn>
                     <PKColumn>c58</PKColumn>
                     <FKColumn>c60</FKColumn>
                 </ReferenceColumn>
@@ -633,9 +627,6 @@
             <PKRole></PKRole>
             <FKRole></FKRole>
             <ReferenceColumns>
-                <ReferenceColumn>
-                    <FKColumn>c49</FKColumn>
-                </ReferenceColumn>
                 <ReferenceColumn>
                     <PKColumn>c62</PKColumn>
                     <FKColumn>c65</FKColumn>
