@@ -161,7 +161,7 @@
             <Properties/>
         </Table>
         <Table Id="t8">
-            <Name>types</Name>
+            <Name>question_types</Name>
             <Description></Description>
             <Columns>
                 <Column Id="c36">
@@ -260,7 +260,7 @@
             <Properties/>
         </Table>
         <Table Id="t11">
-            <Name>categories</Name>
+            <Name>question_categories</Name>
             <Description></Description>
             <Columns>
                 <Column Id="c44">
