@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace testsharp_lib
 {
-    public class Question
+    class Types
     {
-        public int Id { get; set; }
-        public int Content { get; set; }
-
     }
 }
