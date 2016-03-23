@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsharp", "testsharp\testsharp.csproj", "{EB13C782-E6FF-465C-8AB9-6CFF0411A647}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "migration", "migration\migration.csproj", "{BFD83C4E-0F65-4A24-98AC-34EB2DB39282}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsharp-lib", "testsharp-lib\testsharp-lib.csproj", "{721489A6-F495-4D24-87C4-C84522E4F168}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{EB13C782-E6FF-465C-8AB9-6CFF0411A647}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB13C782-E6FF-465C-8AB9-6CFF0411A647}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EB13C782-E6FF-465C-8AB9-6CFF0411A647}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD83C4E-0F65-4A24-98AC-34EB2DB39282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD83C4E-0F65-4A24-98AC-34EB2DB39282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD83C4E-0F65-4A24-98AC-34EB2DB39282}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD83C4E-0F65-4A24-98AC-34EB2DB39282}.Release|Any CPU.Build.0 = Release|Any CPU
+		{721489A6-F495-4D24-87C4-C84522E4F168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{721489A6-F495-4D24-87C4-C84522E4F168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{721489A6-F495-4D24-87C4-C84522E4F168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{721489A6-F495-4D24-87C4-C84522E4F168}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
