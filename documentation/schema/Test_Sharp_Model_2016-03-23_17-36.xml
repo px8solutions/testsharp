@@ -14,7 +14,7 @@
         </Counter>
         <Counter>
             <Name>column</Name>
-            <Value>72</Value>
+            <Value>73</Value>
             <Prefix>c</Prefix>
         </Counter>
         <Counter>
@@ -115,6 +115,15 @@
                     <Type>int</Type>
                     <Description></Description>
                     <Nullable>false</Nullable>
+                    <DefaultValue></DefaultValue>
+                    <CheckExpression></CheckExpression>
+                    <Properties/>
+                </Column>
+                <Column Id="c73">
+                    <Name>layout_url</Name>
+                    <Type>text</Type>
+                    <Description></Description>
+                    <Nullable>true</Nullable>
                     <DefaultValue></DefaultValue>
                     <CheckExpression></CheckExpression>
                     <Properties/>
@@ -376,51 +385,6 @@
             <AdditionalSQLAfter></AdditionalSQLAfter>
             <Properties/>
         </Table>
-        <Table Id="t14">
-            <Name>layouts</Name>
-            <Description></Description>
-            <Columns>
-                <Column Id="c58">
-                    <Name>id</Name>
-                    <Type>int</Type>
-                    <Description></Description>
-                    <Nullable>false</Nullable>
-                    <DefaultValue></DefaultValue>
-                    <CheckExpression></CheckExpression>
-                    <Properties/>
-                </Column>
-                <Column Id="c59">
-                    <Name>url</Name>
-                    <Type>text</Type>
-                    <Description></Description>
-                    <Nullable>false</Nullable>
-                    <DefaultValue></DefaultValue>
-                    <CheckExpression></CheckExpression>
-                    <Properties/>
-                </Column>
-                <Column Id="c72">
-                    <Name>question_id</Name>
-                    <Type>int</Type>
-                    <Description></Description>
-                    <Nullable>false</Nullable>
-                    <DefaultValue></DefaultValue>
-                    <CheckExpression></CheckExpression>
-                    <Properties/>
-                </Column>
-            </Columns>
-            <PrimaryKey>
-                <Name></Name>
-                <Columns>
-                    <Column>c58</Column>
-                </Columns>
-            </PrimaryKey>
-            <AlternateKeys/>
-            <Indexes/>
-            <TableChecks/>
-            <AdditionalSQLBefore></AdditionalSQLBefore>
-            <AdditionalSQLAfter></AdditionalSQLAfter>
-            <Properties/>
-        </Table>
         <Table Id="t15">
             <Name>field_types</Name>
             <Description></Description>
@@ -594,7 +558,7 @@
                     <FKColumn>c54</FKColumn>
                 </ReferenceColumn>
             </ReferenceColumns>
-            <Cardinality>1..1</Cardinality>
+            <Cardinality>0..1</Cardinality>
             <Mandatory>true</Mandatory>
             <OnUpdateAction>None</OnUpdateAction>
             <OnDeleteAction>None</OnDeleteAction>
@@ -630,25 +594,6 @@
                 <ReferenceColumn>
                     <PKColumn>c49</PKColumn>
                     <FKColumn>c68</FKColumn>
-                </ReferenceColumn>
-            </ReferenceColumns>
-            <Cardinality>1..*</Cardinality>
-            <Mandatory>true</Mandatory>
-            <OnUpdateAction>None</OnUpdateAction>
-            <OnDeleteAction>None</OnDeleteAction>
-            <Properties/>
-        </Reference>
-        <Reference Id="r26">
-            <Name>layouts_questions</Name>
-            <Description></Description>
-            <PKTable>t7</PKTable>
-            <FKTable>t14</FKTable>
-            <PKRole></PKRole>
-            <FKRole></FKRole>
-            <ReferenceColumns>
-                <ReferenceColumn>
-                    <PKColumn>c25</PKColumn>
-                    <FKColumn>c72</FKColumn>
                 </ReferenceColumn>
             </ReferenceColumns>
             <Cardinality>1..*</Cardinality>
@@ -711,16 +656,6 @@
             <LineColor>#000000</LineColor>
             <FillColor>#ffffff</FillColor>
             <Table>t13</Table>
-            <FixedSize>false</FixedSize>
-        </TableDisplay>
-        <TableDisplay Id="td13">
-            <X>4570.5</X>
-            <Y>4924.5</Y>
-            <Width>130.0</Width>
-            <Height>73.0</Height>
-            <LineColor>#000000</LineColor>
-            <FillColor>#ffffff</FillColor>
-            <Table>t14</Table>
             <FixedSize>false</FixedSize>
         </TableDisplay>
         <TableDisplay Id="td14">
@@ -904,27 +839,6 @@
             <PkTableDisplay>td12</PkTableDisplay>
             <FkTableDisplay>td15</FkTableDisplay>
             <Reference>r25</Reference>
-        </ReferenceDisplay>
-        <ReferenceDisplay Id="rd25">
-            <Color>#000000</Color>
-            <Type>Cross_3CP</Type>
-            <ControlPoints>
-                <ControlPoint>
-                    <X>4513.5</X>
-                    <Y>4838.5</Y>
-                </ControlPoint>
-                <ControlPoint>
-                    <X>4513.5</X>
-                    <Y>4934.5</Y>
-                </ControlPoint>
-                <ControlPoint>
-                    <X>4610.5</X>
-                    <Y>4934.5</Y>
-                </ControlPoint>
-            </ControlPoints>
-            <PkTableDisplay>td6</PkTableDisplay>
-            <FkTableDisplay>td13</FkTableDisplay>
-            <Reference>r26</Reference>
         </ReferenceDisplay>
     </ReferenceDisplays>
     <Properties>
