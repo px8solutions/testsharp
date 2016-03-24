@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using testsharp.lib;
 // Hey it's Destin. Isn't that cool?
 namespace testsharp.Controllers
 {
@@ -10,6 +11,8 @@ namespace testsharp.Controllers
     {
         public ActionResult Index()
         {
+            Question myQuestion = new Question();
+            //myQuestion.Category.
             return View();
         }
 

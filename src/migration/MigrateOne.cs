@@ -15,8 +15,8 @@ namespace migration
             Create.Table("questions")
                 .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
                 .WithColumn("content").AsString().NotNullable()
-                .WithColumn("ordinal").AsInt32().NotNullable()
-                .
+                .WithColumn("ordinal").AsInt32().NotNullable();
+                //.
         }
 
         public override void Down()
