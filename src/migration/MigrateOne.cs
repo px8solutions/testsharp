@@ -15,6 +15,7 @@ namespace migration
             Create.Table("questions")
                 .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
                 .WithColumn("content").AsString().NotNullable()
+<<<<<<< HEAD
                 .WithColumn("ordinal").AsInt32().NotNullable()
                 .WithColumn("layout_url").AsString().Nullable()
                 .WithColumn("type_id").AsInt32().NotNullable().ForeignKey("question_types", "id")
@@ -44,6 +45,10 @@ namespace migration
             */
 
 
+=======
+                .WithColumn("ordinal").AsInt32().NotNullable();
+                //.
+>>>>>>> ee97e6aeca39b53fae836731ecaad401d4b97c1d
         }
 
         public override void Down()

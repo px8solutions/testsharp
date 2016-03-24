@@ -6,16 +6,12 @@ using System.Threading.Tasks;
 
 namespace testsharp.lib
 {
-    public class Question
+    public class Response
     {
         public int Id { get; set; }
         public String Content { get; set; }
+        public Boolean Correct { get; set; }
         public int Ordinal { get; set; }
-        public QuestionTypes QuestionType { get; set; }
-        public Category Category { get; set; }
-        public int ParentId { get; set; }
-        public String URL { get; set; }
-
-        public Response[] Responses { get; set; }
+        public Question Question { get; set; }
     }
 }

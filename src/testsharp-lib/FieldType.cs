@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace testsharp_lib
+namespace testsharp.lib
 {
-    class Types
+    class FieldType
     {
+        public int Id { get; set; }
+        public String description { get; set; }
     }
 }
