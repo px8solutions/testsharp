@@ -15,7 +15,6 @@ namespace migration
             Create.Table("questions")
                 .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
                 .WithColumn("content").AsString().NotNullable()
-<<<<<<< HEAD
                 .WithColumn("ordinal").AsInt32().NotNullable()
                 .WithColumn("layout_url").AsString().Nullable()
                 .WithColumn("type_id").AsInt32().NotNullable().ForeignKey("question_types", "id")
@@ -37,18 +36,23 @@ namespace migration
                 .WithColumn("ordinal").AsInt32().NotNullable()
                 .WithColumn("question_id").AsInt32().NotNullable().ForeignKey("questions", "id");
 
-            /*
-            CreateTable("fields")
+            Create.Table("fields")
                 .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
                 .WithColumn("x").AsInt16().NotNullable()
-                .WithColumn("y").AsInt16().
-            */
+                .WithColumn("y").AsInt16().NotNullable()
+                .WithColumn("w").AsInt16().NotNullable()
+                .WithColumn("h").AsInt16().NotNullable()
+                .WithColumn("response_id").AsInt32().NotNullable().ForeignKey("responses", "id")
+                .WithColumn("field_type_id").AsInt32().NotNullable().ForeignKey("field_type_id", "id");
 
+            Create.Table("field_type")
+                .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
+                .WithColumn("name").AsString().NotNullable();
 
-=======
-                .WithColumn("ordinal").AsInt32().NotNullable();
-                //.
->>>>>>> ee97e6aeca39b53fae836731ecaad401d4b97c1d
+            Create.Table("dropdown_values")
+                .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
+                .WithColumn("content").AsString().NotNullable()
+                .WithColumn("field_id").AsInt32().NotNullable();
         }
 
         public override void Down()
