@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace testsharp.lib
 {
-    class FieldType
+    public enum FieldTypes
     {
-        public int Id { get; set; }
-        public String description { get; set; }
+        TextBox=0,
+        DropDown=1
     }
 }

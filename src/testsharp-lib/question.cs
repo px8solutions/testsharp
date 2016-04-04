@@ -13,8 +13,8 @@ namespace testsharp.lib
         public int Ordinal { get; set; }
         public QuestionTypes QuestionType { get; set; }
         public Category Category { get; set; }
-        public int ParentId { get; set; }
-        public String URL { get; set; }
+        public Question Parent { get; set; }
+        public String ImageURL { get; set; }
 
         public Response[] Responses { get; set; }
     }

@@ -15,10 +15,6 @@ namespace testsharp.lib
         public int H { get; set; }
         public int ResponseId { get; set; }
         public int LayoutId { get; set; }
-        public enum FieldTypes
-        {
-            Boxes,
-            Dropdown
-        }
+        public FieldTypes FieldType { get; set; }
     }
 }

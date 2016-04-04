@@ -1,0 +1,3 @@
+..\packages\FluentMigrator.1.6.1\tools\Migrate.exe /conn "Data Source=.\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True" /provider SqlServer2012 /assembly ..\migration\bin\Debug\migration.dll /task rollback:all
+
+..\packages\FluentMigrator.1.6.1\tools\Migrate.exe /conn "Data Source=.\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True" /provider SqlServer2012 /assembly ..\migration\bin\Debug\migration.dll /task migrate

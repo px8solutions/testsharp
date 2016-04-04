@@ -8,13 +8,13 @@ namespace testsharp.lib
 {
    public enum QuestionTypes
     {
-        CaseStudy,
-        MultipleChoiceSingle,
-        MultipleChoiceMultiple,
-        DragAndDrop,
-        ChooseOptions,
-        CreateSingleList,
-        CreateDoubleList
+        CaseStudy=0,
+        MultipleChoiceSingle=1,
+        MultipleChoiceMultiple=2,
+        DragAndDrop=3,
+        ChooseOptions=4,
+        CreateSingleList=5,
+        CreateDoubleList=6
 
     }
 }
