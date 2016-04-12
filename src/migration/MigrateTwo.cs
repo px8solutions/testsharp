@@ -12,13 +12,13 @@ namespace migration
     {
         public override void Down()
         {
-            Delete.Table("little_joe");
+            // Delete.Table("little_joe"); //what was this for???
         }
 
         public override void Up()
         {
-            Create.Table("little_joe")
-                .WithColumn("id").AsInt32().PrimaryKey();
+         //   Create.Table("little_joe")
+         //       .WithColumn("id").AsInt32().PrimaryKey(); //what was this for???
         }
     }
 }

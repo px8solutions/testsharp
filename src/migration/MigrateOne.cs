@@ -71,7 +71,7 @@ namespace migration
         {
             Delete.Table("dropdown_values");
             Delete.Table("fields");
-            Delete.Table("field_type");
+            Delete.Table("field_types");
             Delete.Table("responses");
             Delete.Table("questions");
             Delete.Table("question_types");
