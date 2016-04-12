@@ -50,10 +50,11 @@ namespace migration
 
             Insert.IntoTable("field_types").Row(new { id = 0, name = "TextBox" });
             Insert.IntoTable("field_types").Row(new { id = 1, name = "DropDown" });
-            
+            Insert.IntoTable("field_types").Row(new { id = 2, name = "Checkmark" });
+
             Create.Table("fields")
                 .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
-                .WithColumn("x").AsInt16().NotNullable()
+                .WithColumn("x").AsInt16().NotNullable() //not nullable appears to be implicit, also needs to be nullable for checkmark type.
                 .WithColumn("y").AsInt16().NotNullable()
                 .WithColumn("w").AsInt16().NotNullable()
                 .WithColumn("h").AsInt16().NotNullable()

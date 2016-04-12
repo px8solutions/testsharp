@@ -9,6 +9,7 @@ namespace testsharp.lib
     public enum FieldTypes
     {
         TextBox=0,
-        DropDown=1
+        DropDown=1,
+       //Checkmark=2
     }
 }
