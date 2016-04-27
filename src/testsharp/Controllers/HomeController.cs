@@ -12,11 +12,14 @@ namespace testsharp.Controllers
         public ActionResult Index()
         {
             Question myQuestion = new Question(8);
+            Response myResponse = new Response(16);
+            Field myField = new Field(1);
 
             ViewBag.myQuestion = myQuestion.Content;
             ViewBag.myQuestio = myQuestion.Category.Description;
             ViewBag.myQuest = myQuestion.Parent.Content;
-            
+            ViewBag.myResponse = myResponse.Content;
+            ViewBag.MyField = myField.Response.Content;
 
             DropdownValue myDropdownValue = new DropdownValue(0);
 
