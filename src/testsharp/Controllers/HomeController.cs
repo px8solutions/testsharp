@@ -12,6 +12,7 @@ namespace testsharp.Controllers
         public ActionResult Index()
         {
             Question myQuestion = new Question(8);
+            myQuestion.Content = "wubwubwub";
             Response myResponse = new Response(16);
             Field myField = new Field(1);
 

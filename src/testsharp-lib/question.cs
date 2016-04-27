@@ -9,8 +9,35 @@ namespace testsharp.lib
 {
     public class Question
     {
+
+
+
         public int Id { get; set; }
-        public String Content { get; set; }
+        private String pContent;
+        public String Content
+        {
+            get
+            {
+                return pContent;
+            }
+            set
+            {
+                string connetionString = null;
+                SqlConnection cnn;
+                SqlCommand command;
+                String sql = null;
+                SqlDataReader dataReader;
+                //connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
+                connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
+                cnn = new SqlConnection(connetionString);
+                cnn.Open();
+                sql = "UPDATE testsharp.dbo.questions SET content='" + Content + "' WHERE id=" + Id;
+                command = new SqlCommand(sql, cnn);
+                dataReader = command.ExecuteReader();
+
+
+            }
+        }
         public int Ordinal { get; set; }
         public QuestionTypes QuestionType { get; set; }
         public Category Category { get; set; }
@@ -37,7 +64,7 @@ namespace testsharp.lib
                 dataReader = command.ExecuteReader();
                 while (dataReader.Read())
                 {
-                    Content =(String) dataReader.GetValue(0);
+                    pContent =(String) dataReader.GetValue(0);
                     Ordinal = (int)dataReader.GetValue(1);
                     QuestionType = (QuestionTypes) dataReader.GetValue(2);
                     Category = new Category((int) dataReader.GetValue(3));
