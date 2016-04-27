@@ -16,6 +16,11 @@ namespace testsharp.Controllers
             ViewBag.myQuestion = myQuestion.Content;
             ViewBag.myQuestio = myQuestion.Category.Description;
             ViewBag.myQuest = myQuestion.Parent.Content;
+            
+
+            DropdownValue myDropdownValue = new DropdownValue(0);
+
+            ViewBag.myDropdownValue = myDropdownValue.Content;
             return View();
         }
 
