@@ -11,8 +11,11 @@ namespace testsharp.Controllers
     {
         public ActionResult Index()
         {
-            Question myQuestion = new Question();
-            //myQuestion.Category.
+            Question myQuestion = new Question(8);
+
+            ViewBag.myQuestion = myQuestion.Content;
+            ViewBag.myQuestio = myQuestion.Category.Description;
+            ViewBag.myQuest = myQuestion.Parent.Content;
             return View();
         }
 
