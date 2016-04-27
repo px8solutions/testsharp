@@ -68,6 +68,9 @@ namespace migration
             Insert.IntoTable("responses").Row(new { id = 14, content = "no", correct = false, ordinal = 1, question_id = 6 });
             Insert.IntoTable("responses").Row(new { id = 15, content = "NTFS", correct = true, ordinal = 2, question_id = 6 });
 
+            // Create Dropdown
+            Insert.IntoTable("dropdown_values").Row(new { id = 0, content = "fix the jqueries", field_id = 2 }); 
+
         }
 
         public override void Down()

@@ -20,7 +20,7 @@ namespace testsharp.lib
             SqlCommand command;
             String sql = null;
             SqlDataReader dataReader;
-            connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
+            connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
             cnn = new SqlConnection(connetionString);
 
             try
