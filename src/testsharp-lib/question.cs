@@ -26,6 +26,7 @@ namespace testsharp.lib
             SqlCommand command;
             String sql = null;
             SqlDataReader dataReader;
+            //connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
             connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
             cnn = new SqlConnection(connetionString);
             try
@@ -46,7 +47,6 @@ namespace testsharp.lib
 
                         Parent  = new Question( (int)dataReader.GetValue(4));
                     }
-                    //Parent = new Question(7);
 
                     ImageURL = (String)dataReader.GetValue(5);
 
