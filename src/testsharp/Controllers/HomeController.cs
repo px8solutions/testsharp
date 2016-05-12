@@ -41,5 +41,21 @@ namespace testsharp.Controllers
 
             return View();
         }
+
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(FormCollection form)
+        {
+            ViewBag.Yolo = form["id"].ToString();
+            ViewBag.rofl = form["content"].ToString();
+            return View();
+
+        }
+
     }
 }
