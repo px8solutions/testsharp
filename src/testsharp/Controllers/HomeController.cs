@@ -26,12 +26,15 @@ namespace testsharp.Controllers
             DropdownValue myDropdownValue = new DropdownValue(0);
 
             ViewBag.myDropdownValue = myDropdownValue.Content;
+
             return View();
         }
 
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
+
+            ViewBag.CategoryTest = Category.Display(0);
 
             return View();
         }

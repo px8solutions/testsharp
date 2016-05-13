@@ -23,6 +23,29 @@ namespace testsharp.lib
         //using auto-implemented property
         public string Name { get; set; }
 
+        //for displaying category
+        public static string Display(int id)
+        {
+            string _desc;
+
+            Db db = new Db();
+
+            var reader = db.ExecuteReader("SELECT name FROM question_categories WHERE id=" + id.ToString());
+
+            if (reader.Read())
+            {
+                _desc = (string)reader.GetValue(id);
+            }
+            else
+            {
+                _desc = "null";
+            }
+
+            reader.Close();
+            db.Close();
+
+            return _desc;
+        }
 
         //static load method
         public static Category Load(int id)
