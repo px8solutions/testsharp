@@ -67,7 +67,9 @@ namespace testsharp.lib
                     pContent =(String) dataReader.GetValue(0);
                     Ordinal = (int)dataReader.GetValue(1);
                     QuestionType = (QuestionTypes) dataReader.GetValue(2);
-                    Category = new Category((int) dataReader.GetValue(3));
+
+                    //TODO
+                    //Category = new Category((int) dataReader.GetValue(3));
 
                     if (dataReader.GetValue(4) != null)
                     {

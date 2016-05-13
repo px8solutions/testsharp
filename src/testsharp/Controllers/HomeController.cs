@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -17,7 +18,7 @@ namespace testsharp.Controllers
             Field myField = new Field(1);
 
             ViewBag.myQuestion = myQuestion.Content;
-            ViewBag.myQuestio = myQuestion.Category.Description;
+            ViewBag.myQuestio = myQuestion.Category.Name;
             ViewBag.myQuest = myQuestion.Parent.Content;
             ViewBag.myResponse = myResponse.Content;
             ViewBag.MyField = myField.Response.Content;
@@ -41,5 +42,35 @@ namespace testsharp.Controllers
 
             return View();
         }
+
+
+        public ActionResult Add()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Add(FormCollection form)
+        {
+            string connetionString = null;
+            SqlConnection cnn;
+            SqlCommand command;
+            String sql = null;
+            SqlDataReader dataReader;
+            //connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
+            connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
+            cnn = new SqlConnection(connetionString);
+            cnn.Open();
+            sql = "INSERT INTO testsharp.dbo.questions VALUES (content='" + form["content"].ToString() + "' WHERE id=" + form["id"].ToString()+")";
+            command = new SqlCommand(sql, cnn);
+            dataReader = command.ExecuteReader();
+
+
+            ViewBag.Yolo = form["id"].ToString();
+            ViewBag.rofl = form["content"].ToString();
+            return View();
+
+        }
+
     }
 }
