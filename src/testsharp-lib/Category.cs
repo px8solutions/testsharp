@@ -9,36 +9,6 @@ namespace testsharp.lib
 {
     public class Category
     {
-<<<<<<< HEAD
-        public int Id { get; set; }
-        public String Description { get; set; }
-   
-
-        public Category(int Id)
-        {  
-            string connetionString = null;
-            SqlConnection cnn;
-            SqlCommand command;
-            String sql = null;
-            SqlDataReader dataReader;
-            //connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
-            connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
-            cnn = new SqlConnection(connetionString);
-
-            try
-            {
-                cnn.Open();
-                sql = "select name from testsharp.dbo.question_categories where id=" + Id;
-                command = new SqlCommand(sql, cnn);
-
-                dataReader = command.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    Description = (String)dataReader.GetValue(0);
-                }
-            }
-            catch (Exception ex)
-=======
         //backing field for property
         private int _id=-1;
 
@@ -64,7 +34,7 @@ namespace testsharp.lib
             Category category = new Category();
 
             if (reader.Read())
->>>>>>> a796c0cea1a99404e241689726361d36d4adb90e
+
             {
                 category._id = (int)reader["id"];
                 category.Name = (string)reader["name"];
