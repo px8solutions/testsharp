@@ -17,7 +17,7 @@ namespace testsharp.Controllers
             Db db = new Db();
             db.Open();
 
-            var reader = db.Execute("select * from questions where id in (2,3,4)");
+            var reader = db.ExecuteReader("select * from questions where id in (2,3,4)");
 
             while (reader.Read())
             {

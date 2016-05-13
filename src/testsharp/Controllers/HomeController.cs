@@ -18,7 +18,7 @@ namespace testsharp.Controllers
             Field myField = new Field(1);
 
             ViewBag.myQuestion = myQuestion.Content;
-            ViewBag.myQuestio = myQuestion.Category.Description;
+            ViewBag.myQuestio = myQuestion.Category.Name;
             ViewBag.myQuest = myQuestion.Parent.Content;
             ViewBag.myResponse = myResponse.Content;
             ViewBag.MyField = myField.Response.Content;

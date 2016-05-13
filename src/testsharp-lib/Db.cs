@@ -21,28 +21,54 @@ namespace testsharp.lib
             }
         }
 
+        public Db(bool autoOpen=true, string connectionString=null)
+        {
+            if (autoOpen)
+            {
+                Open(connectionString);
+            }
+        }
+
         public void Open(string connectionString)
         {
+            if (connectionString==null)
+            {
+                connectionString = ConnectionString;
+            }
+
+
             _con = new SqlConnection(connectionString);
             _con.Open();
         }
 
         public void Open()
         {
-            Open(ConnectionString);
+            Open(null);
         }
 
-        public System.Data.IDataReader Execute(string sql)
+        public System.Data.IDataReader ExecuteReader(string sql)
         {
+            //caller must close reader
             _cmd = _con.CreateCommand();
             _cmd.CommandText = sql;
             return _cmd.ExecuteReader();
         }
 
+        public int ExecuteNonQuery(string sql)
+        {
+            //caller must close reader
+            _cmd = _con.CreateCommand();
+            _cmd.CommandText = sql;
+            return _cmd.ExecuteNonQuery();
+        }
+
         public void Close()
         {
+            //no need to close or dispose SqlCommand
             _con.Close();
         }
+
+
 
 
     }

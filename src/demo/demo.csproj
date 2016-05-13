@@ -54,6 +54,10 @@
       <Project>{bfd83c4e-0f65-4a24-98ac-34eb2db39282}</Project>
       <Name>migration</Name>
     </ProjectReference>
+    <ProjectReference Include="..\testsharp-lib\testsharp-lib.csproj">
+      <Project>{721489a6-f495-4d24-87c4-c84522e4f168}</Project>
+      <Name>testsharp-lib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

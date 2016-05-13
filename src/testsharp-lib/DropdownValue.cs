@@ -36,7 +36,7 @@ namespace testsharp.lib
                     FieldId = (int)dataReader.GetValue(1);
                 }
             }
-            catch (Exception ex)
+            catch ( Exception)
             {
                 Console.WriteLine("Can not open connection ! ");
             }
