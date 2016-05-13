@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>Insert</h2>
+
+<form action="Insert" method="POST">
+
+    <p>Insert a new category.</p><br />
+    <p>Category doesn't auto-increment.</p>
+
+    <p>ID:</p> <input type="text" name="id" /><br />
+    <p>Name:</p> <input type="text" name="name" /><br />
+    <input type="submit" value="Insert" />
+
+</form>
+
+<p>@ViewBag.CatId</p><br />
+<p>@ViewBag.CatName</p>

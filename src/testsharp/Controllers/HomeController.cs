@@ -75,5 +75,37 @@ namespace testsharp.Controllers
 
         }
 
+        // it's destin. i added this to check out the code joe wrote and also test my thing.
+        public ActionResult Insert()
+        {
+            return View();
+        }
+
+
+        //TODO: doesn't work
+        [HttpPost]
+        public ActionResult Insert(FormCollection form)
+        {
+            int outputID;
+
+            if (Int32.TryParse(form["id"], out outputID))
+            {
+                Category cat = Category.Load(outputID);
+                cat.Name = form["name"];
+                cat.Update();
+
+                ViewBag.CatId = outputID.ToString();
+                ViewBag.CatId = Category.Display(outputID);
+            }
+            else
+            {
+                ViewBag.CatId = "I'm afraid I can't let you do that...";
+            }
+
+
+
+            return View();
+        }
+
     }
 }
