@@ -15,9 +15,12 @@ namespace migration
             //   Create.Table("little_joe")
             //       .WithColumn("id").AsInt32().PrimaryKey(); //what was this for???
 
-            Insert.IntoTable("question_categories").Row(new { id = 0, name = "Use HTML Syntax (25%)" });
+            Insert.IntoTable("question_categories").Row(new { id = 0, name = "Zero" });
+            Insert.IntoTable("question_categories").Row(new { id = 1, name = "One" });
+            Insert.IntoTable("question_categories").Row(new { id = 2, name = "Two" });
+            Insert.IntoTable("question_categories").Row(new { id = 3, name = "Three" });
 
-        //CaseStudy
+            //CaseStudy
             Insert.IntoTable("questions").Row(new { id = 7, content = "Do a case study, press b to fire.", ordinal = 0, type_id = 0, category_id = 0 });
 
             Insert.IntoTable("questions").Row(new { id = 8, content = "pick one", ordinal = 1, type_id = 0, category_id = 0, parent_id = 7 });

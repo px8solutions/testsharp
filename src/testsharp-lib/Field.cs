@@ -41,7 +41,7 @@ namespace testsharp.lib
                    // Y = (int)dataReader.GetValue(1);
                    // W = (int)dataReader.GetValue(2);
                    // H = (int)dataReader.GetValue(3);
-                    Response = new Response((int)dataReader.GetValue(4));
+                   // Response = new Response((int)dataReader.GetValue(4));
                     FieldType= (FieldTypes)dataReader.GetValue(5);
                 }
             }

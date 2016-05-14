@@ -10,34 +10,8 @@ namespace testsharp.lib
     public class Question
     {
 
-
-
         public int Id { get; set; }
-        private String pContent;
-        public String Content
-        {
-            get
-            {
-                return pContent;
-            }
-            set
-            {
-                string connetionString = null;
-                SqlConnection cnn;
-                SqlCommand command;
-                String sql = null;
-                SqlDataReader dataReader;
-                //connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
-                connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
-                cnn = new SqlConnection(connetionString);
-                cnn.Open();
-                sql = "UPDATE testsharp.dbo.questions SET content='" + Content + "' WHERE id=" + Id;
-                command = new SqlCommand(sql, cnn);
-                dataReader = command.ExecuteReader();
-
-
-            }
-        }
+        public string Content { get; set; }
         public int Ordinal { get; set; }
         public QuestionTypes QuestionType { get; set; }
         public Category Category { get; set; }
@@ -46,53 +20,52 @@ namespace testsharp.lib
 
         public Response[] Responses { get; set; }
 
-        public Question(int Id)
+        public static Question Load(int id)
         {
-            string connetionString = null;
-            SqlConnection cnn;
-            SqlCommand command;
-            String sql = null;
-            SqlDataReader dataReader;
-            //connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
-            connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
-            cnn = new SqlConnection(connetionString);
-            try
+            Db db = new Db();
+            var reader = db.ExecuteReader("select * from questions where id=" + id.ToString());
+
+            Question question = new Question();
+
+            if (reader.Read())
             {
-                cnn.Open();
-                sql = "select content, ordinal, type_id, category_id, parent_id, image_url from testsharp.dbo.questions where id="+Id;
-                command = new SqlCommand(sql, cnn);
-                dataReader = command.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    pContent =(String) dataReader.GetValue(0);
-                    Ordinal = (int)dataReader.GetValue(1);
-                    QuestionType = (QuestionTypes) dataReader.GetValue(2);
+                question.Id = (int)reader["id"];
+                question.Content = (string)reader["content"];
+                question.Ordinal = (int)reader["ordinal"];
+                //question.QuestionType = new QuestionTypes( (int)reader["type_id"]);
+                //question.Category = new Category((int)reader["category_id"]);
+                //question.Parent = new Question((int)reader["parent_id"]);
+                question.ImageURL = (string)reader["image_url"];
 
-                    //TODO
-                    //Category = new Category((int) dataReader.GetValue(3));
+                reader.Close();
+                db.Close();
 
-                    if (dataReader.GetValue(4) != null)
-                    {
-
-                        Parent  = new Question( (int)dataReader.GetValue(4));
-                    }
-
-                    ImageURL = (String)dataReader.GetValue(5);
-
-                }
-                dataReader.Close(); command.Dispose();
-
-                Console.WriteLine("Connection Open ! ");
-                cnn.Close();
+                return question;
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Can not open connection ! ");
-            }
-            
-            
 
-
+            //on db connection failure.
+            return null;
         }
+
+        public void Insert()
+        {
+            Db db = new Db();
+
+            db.ExecuteNonQuery("insert into questions values (" + Id.ToString() + ",'" + Content.ToString() + "',"
+                + "'" + Ordinal.ToString() + "'," + "'" + QuestionType.ToString() + "'," + "'" 
+                + Category.Id.ToString() + "'," + "'" + Parent.Id.ToString() + "'," + "'" + ImageURL.ToString());
+
+            db.Close();
+        }
+
+        public void Update()
+        {
+            Db db = new Db();
+
+            db.ExecuteNonQuery("update values set " + "content='" + Content.ToString() + "',"
+                + "Ordinal='" + Ordinal.ToString() + "'," + "type_id='" + QuestionType.ToString() + "'," + "Category_id='"
+                + Category.Id.ToString() + "'," + "parent_id='" + Parent.Id.ToString() + "'," + "image_url='" + ImageURL.ToString()+"where id ='"+Id.ToString()+"')");
+        }
+
     }
 }

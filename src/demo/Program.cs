@@ -13,8 +13,9 @@ namespace demo
         static void Main(string[] args)
         {
 
-            Category c = Category.Load(0);
-            c.Name = "bar!";
+            Category c = Category.Load(2);
+            c.Id = 3;
+            //c.Name = "bar!";
             c.Update();
 
             //Category c = new Category();
