@@ -32,19 +32,18 @@ namespace testsharp.lib
                 question.Id = (int)reader["id"];
                 question.Content = (string)reader["content"];
                 question.Ordinal = (int)reader["ordinal"];
-                //question.QuestionType = new QuestionTypes( (int)reader["type_id"]);
-                //question.Category = new Category((int)reader["category_id"]);
-                //question.Parent = new Question((int)reader["parent_id"]);
+                question.QuestionType = (QuestionTypes)reader["type_id"];
+                question.Category.Id = (int)reader["category_id"];
+                question.Parent.Id = (int)reader["parent_id"];
                 question.ImageURL = (string)reader["image_url"];
 
                 reader.Close();
                 db.Close();
 
-                return question;
+                
             }
 
-            //on db connection failure.
-            return null;
+            return question;
         }
 
         public void Insert()

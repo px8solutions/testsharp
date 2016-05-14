@@ -30,7 +30,7 @@ namespace testsharp.lib
                 response.Correct = (Boolean)reader["correct"];
                 response.Ordinal = (int)reader["ordinal"];
 
-               // response.Question = new Question((Question)reader["question_id"]);
+                response.Question.Id = (int)reader["question_id"];
             }
             reader.Close();
             db.Close();

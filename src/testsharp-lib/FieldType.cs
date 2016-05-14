@@ -10,6 +10,5 @@ namespace testsharp.lib
     {
         TextBox=0,
         DropDown=1,
-       //Checkmark=2
     }
 }
