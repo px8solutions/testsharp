@@ -12,22 +12,7 @@ namespace testsharp.Controllers
     {
         public ActionResult Index()
         {
-            /*
-            Question myQuestion = new Question(8);
-            myQuestion.Content = "wubwubwub";
-            Response myResponse = new Response(16);
-            Field myField = new Field(1);
 
-            ViewBag.myQuestion = myQuestion.Content;
-            //ViewBag.myQuestio = myQuestion.Category.Name;
-            ViewBag.myQuest = myQuestion.Parent.Content;
-            ViewBag.myResponse = myResponse.Content;
-            ViewBag.MyField = myField.Response.Content;
-
-            DropdownValue myDropdownValue = new DropdownValue(0);
-
-            ViewBag.myDropdownValue = myDropdownValue.Content;
-            */
             return View();
             
         }

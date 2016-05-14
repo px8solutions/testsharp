@@ -15,38 +15,47 @@ namespace testsharp.lib
         public int Ordinal { get; set; }
         public Question Question { get; set; }
 
-
-
-        public Response(int Id)
+    public static Response Load(int id)
         {
-            string connetionString = null;
-            SqlConnection cnn;
-            SqlCommand command;
-            String sql = null;
-            SqlDataReader dataReader;
-            //connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
-            connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
-            cnn = new SqlConnection(connetionString);
+            Db db = new Db();
 
-            try
-            {
-                cnn.Open();
-                sql = "select content, correct, ordinal, question_id from testsharp.dbo.responses where id=" + Id;
-                command = new SqlCommand(sql, cnn);
+            var reader = db.ExecuteReader("select * from responses where id=" + id.ToString());
 
-                dataReader = command.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    Content = (String)dataReader.GetValue(0);
-                    Correct = (Boolean)dataReader.GetValue(1);
-                    Ordinal = (int)dataReader.GetValue(2);
-                    Question = new Question( (int)dataReader.GetValue(3));
-                }
-            }
-            catch (Exception ex)
+            Response response = new Response();
+
+            if (reader.Read())
             {
-                Console.WriteLine("Can not open connection ! ");
+                response.Id = (int)reader["id"];
+                response.Content = (string)reader["content"];
+                response.Correct = (Boolean)reader["correct"];
+                response.Ordinal = (int)reader["ordinal"];
+
+               // response.Question = new Question((Question)reader["question_id"]);
             }
+            reader.Close();
+            db.Close();
+
+            return response;
         }
+
+    public void Insert()
+        {
+            Db db = new Db();
+
+            db.ExecuteNonQuery("insert into Responses values (" + Id.ToString() + ",'" + Content + ",'" +Correct.ToString()+",'"+Ordinal.ToString()+"',"+Question.Id + "')");
+
+            db.Close();
+        }
+    public void Update()
+        {
+            Db db = new Db();
+
+            db.ExecuteNonQuery("update Responses set id='" + Id.ToString() + "'," + "Content='" + Content.ToString() + "'," + "Correct='" + Correct.ToString() + "'," + "ordinal='"
+                + Ordinal.ToString() + "'," + "question_id='" + Question.Id + "')");
+
+            db.Close();
+
+        }
+       
     }
 }
