@@ -9,37 +9,45 @@ namespace testsharp.lib
 {
     public class DropdownValue
     {
-        public int Id { get; set; }
-        public String Content { get; set; }
-        public int FieldId { get; set; }
+        public int id { get; set; }
+        public string content { get; set; }
+        public int fieldId { get; set; }
 
-        public DropdownValue(int Id)
+        public static DropdownValue Load(int id)
         {
-            string connetionString = null;
-            SqlConnection cnn;
-            SqlCommand command;
-            String sql = null;
-            SqlDataReader dataReader;
-            connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
-            cnn = new SqlConnection(connetionString);
+            Db db = new Db();
 
-            try
-            {
-                cnn.Open();
-                sql = "select content from testsharp.dbo.dropdown_values where id=" + Id;
-                command = new SqlCommand(sql, cnn);
+            var reader = db.ExecuteReader("SELECT * FROM dropdown_values WHERE id=" + id.ToString());
 
-                dataReader = command.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    Content = (String)dataReader.GetValue(0);
-                    FieldId = (int)dataReader.GetValue(1);
-                }
-            }
-            catch ( Exception)
+            DropdownValue dv = new DropdownValue();
+
+            if (reader.Read())
             {
-                Console.WriteLine("Can not open connection ! ");
+                dv.id = (int)reader["id"];
+                dv.content = (string)reader["content"];
+                dv.fieldId = (int)reader["field_id"];
             }
+
+            reader.Close();
+            db.Close();
+
+            return dv;           
+        }
+
+        public void Insert()
+        {
+            Db db = new Db();
+
+            db.ExecuteNonQuery("INSERT INTO dropdown_values VALUES (" + id.ToString() + ",'" + content.ToString() + "'," + fieldId.ToString() + ")");
+
+            db.Close();
+        }
+
+        public void Update()
+        {
+            Db db = new Db();
+
+            db.ExecuteNonQuery("UPDATE dropdown_values SET _content = '" + content + "," + "field_id = " + fieldId + "' WHERE id=" + id.ToString());
         }
     }
 }

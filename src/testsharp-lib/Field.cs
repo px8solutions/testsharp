@@ -7,8 +7,44 @@ using System.Threading.Tasks;
 
 namespace testsharp.lib
 {
- public class Field
+    public class Field
     {
+        public int id { get; set; }
+        public int x { get; set; }
+        public int y { get; set; }
+        public int w { get; set; }
+        public int h { get; set; }
+        public Response Response { get; set; }
+        public FieldTypes FieldType { get; set; }
+
+        public static Field Load(int id)
+        {
+            Db db = new Db();
+
+            var reader = db.ExecuteReader("SELECT * FROM fields WHERE id=" + id.ToString());
+
+            Field field = new Field();
+
+            if (reader.Read())
+            {
+                field.id = (int)reader["id"];
+                field.x = (int)reader["x"];
+                field.y = (int)reader["y"];
+                field.w = (int)reader["w"];
+                field.h = (int)reader["h"];
+                field.Response = (Response)reader["response_id"];
+                field.FieldType = (FieldTypes)reader["field_type_id"];
+            }
+
+            reader.Close();
+            db.Close();
+
+            return field;
+        }
+
+
+
+        /*
         public int Id { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
@@ -50,7 +86,6 @@ namespace testsharp.lib
                // Console.WriteLine("Can not open connection ! ");
             }
         }
-
-
+        */
     }
 }

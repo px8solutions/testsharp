@@ -13,7 +13,7 @@ namespace demo
         static void Main(string[] args)
         {
 
-            Category c = Category.Load(0);
+            Category c = Category.Load(1);
             c.Name = "bar!";
             c.Update();
 
@@ -25,8 +25,26 @@ namespace demo
 
             Console.WriteLine(c.Id + " "+c.Name);
 
+            //DropdownValueTest();
+            FieldTest();
         }
 
+        static void DropdownValueTest()
+        {
+            DropdownValue dv = DropdownValue.Load(2);
+            dv.id = 1;
+            dv.content = "Kroger Brand Seltzer Water";
+            dv.fieldId = 2;
+            dv.Insert();
+
+            Console.WriteLine("Inserted to dropdown_values, " + dv.fieldId + ", " + dv.content);
+        }
+
+        static void FieldTest()
+        {
+            Field field = Field.Load(0);
+            Console.WriteLine(field.FieldType);
+        }
 
         static void foo()
         {
