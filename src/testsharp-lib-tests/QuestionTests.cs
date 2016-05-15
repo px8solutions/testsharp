@@ -17,7 +17,7 @@ namespace testsharp_lib_tests
             Question myQuestion = Question.Load(6);
 
             Assert.AreEqual(myQuestion.Id, 6);
-            //Assert.AreEqual(myQuestion.)
+            Assert.AreEqual(myQuestion.QuestionType, 6);
 
         }
     }
