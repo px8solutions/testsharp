@@ -21,6 +21,9 @@ namespace testsharp_lib_tests
             Assert.IsNotNull(myQuestion.Content);
             Assert.AreEqual(myQuestion.QuestionType, QuestionTypes.CreateDoubleList,"type not equal.");
 
+            Question myNewQuestion = new Question();
+            myNewQuestion.Id = 77;
+
             
 
         }
