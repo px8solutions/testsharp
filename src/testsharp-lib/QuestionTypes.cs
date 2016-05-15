@@ -14,7 +14,7 @@ namespace testsharp.lib
         DragAndDrop=3,
         ChooseOptions=4,
         CreateSingleList=5,
-        CreateDoubleList=6
+        //CreateDoubleList=6
 
     }
 }

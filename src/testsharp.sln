@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsharp-lib", "testsharp-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "demo", "demo\demo.csproj", "{A326A389-BA39-4DDB-9736-5E3CF53212B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testsharp-lib-tests", "testsharp-lib-tests\testsharp-lib-tests.csproj", "{9C5238C8-B80E-470D-9130-115CAE79545A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{A326A389-BA39-4DDB-9736-5E3CF53212B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A326A389-BA39-4DDB-9736-5E3CF53212B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A326A389-BA39-4DDB-9736-5E3CF53212B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C5238C8-B80E-470D-9130-115CAE79545A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C5238C8-B80E-470D-9130-115CAE79545A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C5238C8-B80E-470D-9130-115CAE79545A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C5238C8-B80E-470D-9130-115CAE79545A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

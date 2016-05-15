@@ -33,9 +33,17 @@ namespace testsharp.lib
                 question.Content = (string)reader["content"];
                 question.Ordinal = (int)reader["ordinal"];
                 question.QuestionType = (QuestionTypes)reader["type_id"];
-                question.Category.Id = (int)reader["category_id"];
-                question.Parent.Id = (int)reader["parent_id"];
-                question.ImageURL = (string)reader["image_url"];
+                question.Category = Category.Load((int)reader["category_id"]);
+
+                if (reader["parent_id"] != DBNull.Value)
+                {
+                    question.Parent = Question.Load( (int)reader["parent_id"]);
+                }
+
+                if (reader["image_url"] != DBNull.Value)
+                {
+                    question.ImageURL = (string)reader["image_url"];
+                }
 
                 reader.Close();
                 db.Close();
@@ -50,7 +58,7 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            db.ExecuteNonQuery("insert into questions values (" + Id.ToString() + ",'" + Content.ToString() + "',"
+            db.ExecuteNonQuery("insert into questions values (" + Id.ToString() + ",'" + Content + "',"
                 + "'" + Ordinal.ToString() + "'," + "'" + QuestionType.ToString() + "'," + "'" 
                 + Category.Id.ToString() + "'," + "'" + Parent.Id.ToString() + "'," + "'" + ImageURL.ToString());
 
@@ -61,9 +69,11 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            db.ExecuteNonQuery("update values set " + "content='" + Content.ToString() + "',"
+            db.ExecuteNonQuery("update values set " + "content='" + Content + "',"
                 + "Ordinal='" + Ordinal.ToString() + "'," + "type_id='" + QuestionType.ToString() + "'," + "Category_id='"
                 + Category.Id.ToString() + "'," + "parent_id='" + Parent.Id.ToString() + "'," + "image_url='" + ImageURL.ToString()+"where id ='"+Id.ToString()+"')");
+
+            db.Close();
         }
 
     }
