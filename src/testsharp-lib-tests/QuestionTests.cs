@@ -21,10 +21,20 @@ namespace testsharp_lib_tests
             Assert.IsNotNull(myQuestion.Content);
             Assert.AreEqual(myQuestion.QuestionType, QuestionTypes.CreateDoubleList,"type not equal.");
 
-            Question myNewQuestion = new Question();
-            myNewQuestion.Id = 77;
+          
 
             
+
+        }
+
+        [Test]
+        public void Update()
+        {
+            Question myQuestion = Question.Load(1);
+           
+            myQuestion.Content = "swag' o'att";
+            myQuestion.ImageURL = null;
+            myQuestion.Update();
 
         }
     }

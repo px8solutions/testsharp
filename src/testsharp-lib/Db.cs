@@ -12,7 +12,21 @@ namespace testsharp.lib
     {
         private SqlConnection _con;
         private SqlCommand _cmd;
-        
+
+        public static string Encode(string value)
+        {
+            if (value == null)
+            { 
+                return "NULL";
+            }
+            else
+            {
+                 return "'" + value.Replace("'", "''") + "'";
+            }
+            
+        }
+
+
         public static String ConnectionString
         {
             get
