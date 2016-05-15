@@ -16,8 +16,9 @@ namespace testsharp_lib_tests
         {
             Question myQuestion = Question.Load(6);
 
-            Assert.AreEqual(myQuestion.Id, 6);
-            Assert.AreEqual(myQuestion.QuestionType, 6);
+            Assert.AreEqual(myQuestion.Id, 6,"id not equal.");
+            Assert.AreEqual(myQuestion.QuestionType, QuestionTypes.CreateDoubleList,"type not equal.");
+            
 
         }
     }
