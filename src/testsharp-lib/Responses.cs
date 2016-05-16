@@ -41,13 +41,16 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            int insertQuestionId = 0;
+            string insertQuestionId = "1";
             if (Question!=null)
             {
-                insertQuestionId = Question.Id;
+                insertQuestionId = Question.Id.ToString();
             }
 
-            db.ExecuteNonQuery("insert into Responses values (" + Id.ToString() + ",'" + Content + ",'" +Correct.ToString()+",'"+Ordinal.ToString()+"',"+ insertQuestionId + "')");
+            //db.ExecuteNonQuery("insert into Responses values (" + Id.ToString() + ",'" + Content + ",'" +Correct.ToString()+"','"+Ordinal.ToString()+"',"+ insertQuestionId + "')");
+
+            db.ExecuteNonQuery("insert into Responses (id,content,correct,ordinal,question_id) values ("+Db.Encode(Id.ToString()) + "," + Db.Encode(Content.ToString()) 
+                + ","+Db.Encode(Correct.ToString()) + "," + Db.Encode(Ordinal.ToString()) + "," + Db.Encode(insertQuestionId) + ")");
 
             db.Close();
         }

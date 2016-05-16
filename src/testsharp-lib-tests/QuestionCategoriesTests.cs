@@ -21,7 +21,7 @@ namespace testsharp_lib_tests
         public void InsertQuestionCategory()
         {
             QuestionCategories qc = QuestionCategories.Load(1);
-            qc.Id = 1;
+            qc.Id = 4;
             qc.Name = "Use jQuery (25%)";
             qc.Insert();
         }
@@ -30,7 +30,7 @@ namespace testsharp_lib_tests
         public void UpdateQuestionCategory()
         {
             QuestionCategories qc = QuestionCategories.Load(1);
-            qc.Id = 1;
+            qc.Id = 5;
             qc.Name = "Use JavaScript (25%)";
             qc.Update();
         }

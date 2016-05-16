@@ -12,7 +12,7 @@ namespace testsharp_lib_tests
     public class FieldTests
     {
         [Test]
-        public void Load()
+        public void LoadField()
         {
             Fields field = Fields.Load(1);
 
@@ -23,6 +23,11 @@ namespace testsharp_lib_tests
             Assert.AreEqual(field.h, 10);
             Assert.AreEqual(field.Response.Id, Responses.Load(6).Id);
             Assert.AreEqual(field.FieldType, FieldTypes.TextBox);
+        }
+        [Test]
+        public void UpdateField()
+        {
+
         }
         
     }

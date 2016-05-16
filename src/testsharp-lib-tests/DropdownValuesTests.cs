@@ -12,7 +12,7 @@ namespace testsharp_lib_tests
     public class DropdownValuesTests
     {
         [Test]
-        public void Load()
+        public void LoadDropdownValues()
         {
             DropdownValues dv1 = DropdownValues.Load(0);
 
