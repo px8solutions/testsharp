@@ -21,5 +21,31 @@ namespace testsharp_lib_tests
             Assert.IsNotNull(myResponse.Question);
 
         }
+
+        [Test]
+        public void Update()
+        {
+            Responses myResponse = Responses.Load(1);
+            myResponse.Content = "wow";
+            myResponse.Update();
+            myResponse = Responses.Load(1);
+            Assert.AreEqual(myResponse.Content, "wow");
+
+        }
+
+        [Test]
+        public void Create()
+        {
+            Responses myResponse = new Responses();
+            myResponse.Id = 77;
+            myResponse.Content = "test";
+            myResponse.Correct = true;
+            myResponse.Ordinal = 108;
+            myResponse.Insert();
+
+            //myResponse.Question = Questions.Load(1);
+            Responses tempResponse = Responses.Load(77);
+            Assert.AreEqual(tempResponse.Content.ToString(), "test");
+        }
     }
 }

@@ -9,7 +9,7 @@ using testsharp.lib;
 namespace testsharp_lib_tests
 {
     [TestFixture]
-    public class FieldsTests
+    public class FieldTests
     {
         [Test]
         public void Load()
@@ -24,5 +24,6 @@ namespace testsharp_lib_tests
             Assert.AreEqual(field.Response.Id, Responses.Load(6).Id);
             Assert.AreEqual(field.FieldType, FieldTypes.TextBox);
         }
+        
     }
 }

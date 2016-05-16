@@ -71,6 +71,11 @@ namespace testsharp.lib
 
             db.ExecuteNonQuery("update Questions set content=" + Db.Encode(Content)+", image_url="+ Db.Encode(ImageURL) + " where id="+Id);
 
+            /*db.ExecuteNonQuery("Update Questions set content=" + Db.Encode(Content) + "Ordinal=" + Db.Encode(Ordinal.ToString()) + "type_id=" 
+                + Db.Encode(QuestionType.ToString()) + "Category_id=" + Db.Encode(Category.Id.ToString()) + "parent_id="+Db.Encode(Parent.Id.ToString())
+                +"image_url="+Db.Encode(ImageURL.ToString()));
+                */
+
            // db.ExecuteNonQuery("update values set " + "content='" + Content + "',"
            //     + "Ordinal='" + Ordinal.ToString() + "'," + "type_id='" + QuestionType.ToString() + "'," + "Category_id='"
            //     + Category.Id.ToString() + "'," + "parent_id='" + Parent.Id.ToString() + "'," + "image_url='" + ImageURL.ToString()+"where id ='"+Id.ToString()+"')");
