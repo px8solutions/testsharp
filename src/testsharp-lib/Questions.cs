@@ -88,5 +88,22 @@ namespace testsharp.lib
             db.Close();
         }
 
+        public static int GetMaxQuestions()
+        {
+            int _castedInt;
+
+            Db db = new Db();
+            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM questions");
+
+            if (reader.Read())
+            {
+                Int32.TryParse(reader["max"].ToString(), out _castedInt);
+                return _castedInt;
+            }
+            else
+            {
+                return 0;
+            }
+        }
     }
 }
