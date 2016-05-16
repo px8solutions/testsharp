@@ -24,10 +24,15 @@ namespace testsharp_lib_tests
             Assert.AreEqual(field.Response.Id, Responses.Load(6).Id);
             Assert.AreEqual(field.FieldType, FieldTypes.TextBox);
         }
+
         [Test]
         public void UpdateField()
         {
 
+            Fields myField = Fields.Load(2);
+            myField.h = 77;
+            
+            
         }
         
     }
