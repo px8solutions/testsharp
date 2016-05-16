@@ -21,8 +21,6 @@ namespace demo
             //c.Name = "Foo";
             //c.Insert();
 
-
-
             Console.WriteLine(c.Id + " "+c.Name);
 
             //DropdownValueTest();
