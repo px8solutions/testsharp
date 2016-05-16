@@ -31,9 +31,21 @@ namespace testsharp_lib_tests
 
             Fields myField = Fields.Load(2);
             myField.h = 77;
-            
-            
+            myField.Update();
+            Assert.AreEqual(Fields.Load(2).h, 77);
         }
-        
+
+        [Test]
+        public void InsertFieldTest()
+        {
+            Fields myField = new Fields();
+            myField.id = 8080;
+            myField.x = 7;
+            myField.y = 8;
+            myField.w = 9;
+            myField.h = 22;
+            myField.Insert();
+        }
+
     }
 }

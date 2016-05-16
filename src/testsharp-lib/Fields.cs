@@ -41,51 +41,32 @@ namespace testsharp.lib
 
             return field;
         }
-
-
-
-        /*
-        public int Id { get; set; }
-        public int X { get; set; }
-        public int Y { get; set; }
-        public int W { get; set; }
-        public int H { get; set; }
-        public Response Response { get; set; }
-        public FieldTypes FieldType { get; set; }
-
-        public Field(int Id)
+        public void Insert()
         {
-            string connetionString = null;
-            SqlConnection cnn;
-            SqlCommand command;
-            String sql = null;
-            SqlDataReader dataReader;
-            //connetionString = "Data Source=Q6600;Initial Catalog=testSharp;Integrated Security=True";
-            connetionString = "Data Source=.\\SQLEXPRESS;Initial Catalog=testSharp;Integrated Security=True";
-            cnn = new SqlConnection(connetionString);
+            Db db = new Db();
+            db.ExecuteNonQuery("insert into fields values("+Db.Encode(id.ToString())+","+Db.Encode(x.ToString())
+                +","+Db.Encode(y.ToString())+","+Db.Encode(w.ToString())+Db.Encode(h.ToString())+","
+                +Db.Encode(Response.Id.ToString())+","
+                +"'"+Convert.ChangeType(FieldType, FieldType.GetTypeCode())+"'"+")");
 
-          //  try
-            {
-                cnn.Open();
-                sql = "select x, y, w, h, response_id, field_type_id from testsharp.dbo.fields where id=" + Id;
-                command = new SqlCommand(sql, cnn);
-
-                dataReader = command.ExecuteReader();
-                while (dataReader.Read())
-                {
-                    //X = (int)dataReader.GetValue(0);
-                   // Y = (int)dataReader.GetValue(1);
-                   // W = (int)dataReader.GetValue(2);
-                   // H = (int)dataReader.GetValue(3);
-                   // Response = new Response((int)dataReader.GetValue(4));
-                    FieldType= (FieldTypes)dataReader.GetValue(5);
-                }
-            }
-            //catch (Exception ex)
-            {
-               // Console.WriteLine("Can not open connection ! ");
-            }
+            db.Close();
         }
-        */
+
+        public void Update()
+        {
+            Db db = new Db();
+            db.ExecuteNonQuery("Update fields set x="+ Db.Encode(x.ToString())+","+"y="+ Db.Encode(y.ToString())+","
+                +"w="+ Db.Encode(w.ToString())+","+"h="+ Db.Encode(h.ToString())+","+"response_id="
+                + Db.Encode(Response.Id.ToString())+","+"field_type_id="+ "'" 
+                + Convert.ChangeType(FieldType, FieldType.GetTypeCode()) + "' where id="+ Db.Encode(id.ToString()));
+
+            db.Close();
+
+
+        }
+
+
+
+       
     }
 }
