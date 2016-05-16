@@ -98,12 +98,14 @@ namespace testsharp.lib
             if (reader.Read())
             {
                 Int32.TryParse(reader["max"].ToString(), out _castedInt);
+                db.Close();
                 return _castedInt;
             }
             else
             {
+                db.Close();
                 return 0;
-            }
+            }            
         }
     }
 }
