@@ -58,9 +58,14 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            db.ExecuteNonQuery("insert into questions values (" + Id.ToString() + ",'" + Content + "',"
-                + "'" + Ordinal.ToString() + "'," + "'" + QuestionType.ToString() + "'," + "'" 
-                + Category.Id.ToString() + "'," + "'" + Parent.Id.ToString() + "'," + "'" + ImageURL.ToString());
+            if (ImageURL == null)
+            {
+                ImageURL = "NULL";
+            }
+
+            db.ExecuteNonQuery("insert into questions values (" + Id.ToString() + "," + Db.Encode(Content.ToString()) + ","
+                + Ordinal.ToString() + "," + Db.Encode(ImageURL.ToString()) + "," + Convert.ChangeType(QuestionType, QuestionType.GetTypeCode()) 
+                + "," + Category.Id.ToString() + "," + Parent.Id.ToString() + ")");
 
             db.Close();
         }
@@ -69,7 +74,7 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            db.ExecuteNonQuery("update Questions set content=" + Db.Encode(Content)+", image_url="+ Db.Encode(ImageURL) + " where id="+Id);
+            db.ExecuteNonQuery("update Questions set content=" + Db.Encode(Content) + ", image_url=" + Db.Encode(ImageURL) + ", ordinal =" + Ordinal.ToString() + ", category_id=" + Category.Id.ToString() + ", parent_id=" + Parent.Id.ToString() + ", type_id=" + Convert.ChangeType(QuestionType, QuestionType.GetTypeCode()) + "where id=" + Id);
 
             /*db.ExecuteNonQuery("Update Questions set content=" + Db.Encode(Content) + "Ordinal=" + Db.Encode(Ordinal.ToString()) + "type_id=" 
                 + Db.Encode(QuestionType.ToString()) + "Category_id=" + Db.Encode(Category.Id.ToString()) + "parent_id="+Db.Encode(Parent.Id.ToString())
