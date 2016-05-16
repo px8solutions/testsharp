@@ -2,21 +2,33 @@
     ViewBag.Title = "Admin : Update Question";
 }
 
-<h1>Admin : Update Question</h1>
+<div class="container">
 
-<div class="col-sm-push-3">
-    <p>@ViewBag.One</p><br />
-    <p>@ViewBag.Two</p><br />
-    <p>@ViewBag.Three</p><br />
-    <p>@ViewBag.Four</p><br />
-    <p>@ViewBag.Five</p><br />
-    <p>@ViewBag.Six</p><br />
-    <p>@ViewBag.Seven</p><br />
-    <p>@ViewBag.Eight</p><br />
-    <p>@ViewBag.Nine</p><br />
-    <p>@ViewBag.Ten</p><br />
-</div>
+    <h2>Admin : Update Question</h2>
 
-<div class="col-sm-push-9">
+    <div class="row">
+
+        <div class="three columns">
+
+            <h3 style="border-bottom: solid 2px black;">Questions</h3>
+
+            @{
+                for (int i = 1; i <= testsharp.lib.Questions.GetMaxQuestions() - 1; i++)
+                {
+                    ViewBag.i = i + ". " + testsharp.Controllers.AdminController.QuestionContent[i];
+
+                    <p>@ViewBag.i</p>
+                }
+            }
+
+        </div>
+
+        <div class="nine columns">
+
+            <p> hey there</p>
+
+        </div>
+
+    </div>
 
 </div>
