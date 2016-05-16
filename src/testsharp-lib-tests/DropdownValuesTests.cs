@@ -14,17 +14,19 @@ namespace testsharp_lib_tests
         [Test]
         public void Load()
         {
-            DropdownValue dv1 = DropdownValue.Load(0);
+            DropdownValues dv1 = DropdownValues.Load(0);
 
             Assert.AreEqual(dv1.id, 0);
             Assert.AreEqual(dv1.content, "fix the jqueries");
             Assert.AreEqual(dv1.fieldId, 2);
 
-            DropdownValue dv2 = DropdownValue.Load(1);
+            /*
+            DropdownValues dv2 = DropdownValues.Load(1);
 
             Assert.AreEqual(dv2.id, 1);
             Assert.AreEqual(dv2.content, "Kroger Brand Seltzer Water");
             Assert.AreEqual(dv2.fieldId, 2);
+            */
         }
     }
 }

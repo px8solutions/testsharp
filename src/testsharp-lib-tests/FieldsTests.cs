@@ -14,15 +14,15 @@ namespace testsharp_lib_tests
         [Test]
         public void Load()
         {
-            Field field = Field.Load(1);
+            Fields field = Fields.Load(1);
 
             Assert.AreEqual(field.id, 1);
             Assert.AreEqual(field.x, 21);
-            Assert.AreEqual(field.x, 32);
-            Assert.AreEqual(field.x, 30);
-            Assert.AreEqual(field.x, 10);
-            Assert.AreEqual(field.Response, Response.Load(6));
-            Assert.AreEqual(field.FieldType, 0);
+            Assert.AreEqual(field.y, 32);
+            Assert.AreEqual(field.w, 30);
+            Assert.AreEqual(field.h, 10);
+            Assert.AreEqual(field.Response.Id, Responses.Load(6).Id);
+            Assert.AreEqual(field.FieldType, FieldTypes.TextBox);
         }
     }
 }

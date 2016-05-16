@@ -15,6 +15,5 @@ namespace testsharp.lib
         ChooseOptions=4,
         CreateSingleList=5,
         CreateDoubleList=6
-
     }
 }

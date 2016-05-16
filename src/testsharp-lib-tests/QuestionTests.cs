@@ -14,7 +14,7 @@ namespace testsharp_lib_tests
         [Test]
         public void Load()
         {
-            Question myQuestion = Question.Load(6);
+            Questions myQuestion = Questions.Load(6);
 
             Assert.AreEqual(myQuestion.Id, 6,"id not equal.");
             Assert.IsNotNull(myQuestion.Ordinal);
@@ -30,7 +30,7 @@ namespace testsharp_lib_tests
         [Test]
         public void Update()
         {
-            Question myQuestion = Question.Load(1);
+            Questions myQuestion = Questions.Load(1);
            
             myQuestion.Content = "swag' o'att";
             myQuestion.ImageURL = null;

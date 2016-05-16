@@ -14,7 +14,7 @@ namespace testsharp_lib_tests
         [Test]
         public void Load()
         {
-            Response myResponse = Response.Load(1);
+            Responses myResponse = Responses.Load(1);
 
             Assert.AreEqual(myResponse.Id, 1);
             Assert.IsNotNull(myResponse.Ordinal);

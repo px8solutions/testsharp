@@ -41,14 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Category.cs" />
+    <Compile Include="QuestionCategories.cs" />
     <Compile Include="Db.cs" />
-    <Compile Include="DropdownValue.cs" />
-    <Compile Include="Field.cs" />
-    <Compile Include="FieldType.cs" />
+    <Compile Include="DropdownValues.cs" />
+    <Compile Include="Fields.cs" />
+    <Compile Include="FieldTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Question.cs" />
-    <Compile Include="Response.cs" />
+    <Compile Include="Questions.cs" />
+    <Compile Include="Responses.cs" />
     <Compile Include="QuestionTypes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

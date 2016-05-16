@@ -77,7 +77,7 @@ namespace testsharp.Controllers
 
             if (Int32.TryParse(form["id"], out outputID))
             {
-                Category cat = Category.Load(outputID);
+                QuestionCategories cat = QuestionCategories.Load(outputID);
                 cat.Name = form["name"];
                 cat.Update();
 
