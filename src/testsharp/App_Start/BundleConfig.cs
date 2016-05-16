@@ -25,6 +25,7 @@ namespace testsharp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
+                      "~/Content/skeleton.css",
                       "~/Content/site.css"));
         }
     }
