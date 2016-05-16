@@ -29,7 +29,7 @@ namespace testsharp_lib_tests
         [Test]
         public void UpdateQuestionCategory()
         {
-            QuestionCategories qc = QuestionCategories.Load(1);
+            QuestionCategories qc =  QuestionCategories.Load(1);
             qc.Id = 1;
             qc.Name = "Use JavaScript (25%)";
             qc.Update();
