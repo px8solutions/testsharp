@@ -50,7 +50,7 @@ namespace testsharp.lib
             //db.ExecuteNonQuery("insert into Responses values (" + Id.ToString() + ",'" + Content + ",'" +Correct.ToString()+"','"+Ordinal.ToString()+"',"+ insertQuestionId + "')");
 
             db.ExecuteNonQuery("insert into Responses (id,content,correct,ordinal,question_id) values ("+Db.Encode(Id.ToString()) + "," + Db.Encode(Content.ToString()) 
-                + ","+Db.Encode(Correct.ToString()) + "," + Db.Encode(Ordinal.ToString()) + "," + Db.Encode(insertQuestionId) + ")");
+                +","+Db.Encode(Correct.ToString()) + "," + Db.Encode(Ordinal.ToString()) + "," + Db.Encode(insertQuestionId) + ")");
 
             db.Close();
         }

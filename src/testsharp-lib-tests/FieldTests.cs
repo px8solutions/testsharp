@@ -12,7 +12,7 @@ namespace testsharp_lib_tests
     public class FieldTests
     {
         [Test]
-        public void LoadField()
+        public void FieldLoad()
         {
             Fields field = Fields.Load(1);
 
@@ -26,7 +26,7 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void UpdateField()
+        public void FieldUpdate()
         {
 
             Fields myField = Fields.Load(2);
@@ -36,7 +36,7 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void InsertFieldTest()
+        public void FieldInsert()
         {
             Fields myField = new Fields();
             myField.id = 8080;

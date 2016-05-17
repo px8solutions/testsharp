@@ -12,7 +12,7 @@ namespace testsharp_lib_tests
    public class ResponseTests
     {
         [Test]
-        public void LoadResponse()
+        public void ResponseLoad()
         {
             Responses myResponse = Responses.Load(1);
 
@@ -23,7 +23,7 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void UpdateResponse()
+        public void ResponseUpdate()
         {
             Responses myResponse = Responses.Load(1);
             myResponse.Content = "wow";
@@ -34,7 +34,7 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void CreateResponse()
+        public void ResponseInsert()
         {
             Responses myResponse = new Responses();
             myResponse.Id = 77;

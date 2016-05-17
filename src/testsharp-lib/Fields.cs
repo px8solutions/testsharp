@@ -44,9 +44,16 @@ namespace testsharp.lib
         public void Insert()
         {
             Db db = new Db();
+
+            string insertResponseId = "1";
+            if (Response != null)
+            {
+                insertResponseId = Response.Id.ToString();
+            }
+
             db.ExecuteNonQuery("insert into fields values("+Db.Encode(id.ToString())+","+Db.Encode(x.ToString())
-                +","+Db.Encode(y.ToString())+","+Db.Encode(w.ToString())+Db.Encode(h.ToString())+","
-                +Db.Encode(Response.Id.ToString())+","
+                +","+Db.Encode(y.ToString())+","+Db.Encode(w.ToString())+","+Db.Encode(h.ToString())+","
+                +"'"+ insertResponseId + "',"
                 +"'"+Convert.ChangeType(FieldType, FieldType.GetTypeCode())+"'"+")");
 
             db.Close();

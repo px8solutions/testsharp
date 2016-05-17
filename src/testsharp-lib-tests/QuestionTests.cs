@@ -12,7 +12,7 @@ namespace testsharp_lib_tests
     public class QuestionTests
     {
         [Test]
-        public void LoadQuestionTest()
+        public void QuestionLoad()
         {
             Questions myQuestion = Questions.Load(6);
 
@@ -23,7 +23,7 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void InsertQuestionTest()
+        public void QuestionInsert()
         {
             // insert new data
             Questions myQuestion = Questions.Load(10);
@@ -50,7 +50,7 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void UpdateQuestionTest()
+        public void QuestionUpdate()
         {
             Questions upTest = Questions.Load(10);
 

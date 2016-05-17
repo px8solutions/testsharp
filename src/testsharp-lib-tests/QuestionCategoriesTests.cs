@@ -12,13 +12,13 @@ namespace testsharp_lib_tests
     public class QuestionCategoriesTests
     {
         [Test]
-        public void LoadQuestionCategory()
+        public void QuestionCategoryLoad()
         {
             QuestionCategories qc = QuestionCategories.Load(0);
         }
 
         [Test]
-        public void InsertQuestionCategory()
+        public void QuestionCategoryInsert()
         {
             QuestionCategories qc = QuestionCategories.Load(1);
             qc.Id = 4;
@@ -27,7 +27,7 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void UpdateQuestionCategory()
+        public void QuestionCategoryUpdate()
         {
 
             QuestionCategories qc = QuestionCategories.Load(1);
