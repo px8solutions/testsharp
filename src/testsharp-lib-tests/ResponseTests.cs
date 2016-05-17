@@ -47,5 +47,13 @@ namespace testsharp_lib_tests
             Responses tempResponse = Responses.Load(77);
             Assert.AreEqual(tempResponse.Content.ToString(), "test");
         }
+
+        [Test]
+        public void ResponseDelete()
+        {
+            Responses response = new Responses();
+            response.Id = 19;
+            response.Delete();
+        }
     }
 }

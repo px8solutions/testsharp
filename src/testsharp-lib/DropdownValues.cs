@@ -38,7 +38,7 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            db.ExecuteNonQuery("INSERT INTO dropdown_values VALUES (" + id.ToString() + ",'" + content.ToString() + "'," + fieldId.ToString() + ")");
+            db.ExecuteNonQuery("INSERT INTO dropdown_values VALUES (" + id.ToString() + "," + Db.Encode(content) + "," + fieldId.ToString() + ")");
 
             db.Close();
         }
@@ -48,6 +48,17 @@ namespace testsharp.lib
             Db db = new Db();
 
             db.ExecuteNonQuery("UPDATE dropdown_values SET content = '" + content + "'," + "field_id = '" + fieldId + "' WHERE id='" + id.ToString()+"'");
+
+            db.Close();
+        }
+
+        public void Delete()
+        {
+            Db db = new Db();
+
+            db.ExecuteNonQuery("DELETE FROM dropdown_values WHERE id = " + id);
+
+            db.Close();
         }
     }
 }

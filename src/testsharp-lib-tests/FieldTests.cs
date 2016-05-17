@@ -47,5 +47,12 @@ namespace testsharp_lib_tests
             myField.Insert();
         }
 
+        [Test]
+        public void FieldDelete()
+        {
+            Fields field = Fields.Load(3);
+            field.id = 3;
+            field.Delete();
+        }
     }
 }

@@ -22,6 +22,23 @@ namespace testsharp_lib_tests
         }
 
         [Test]
+        public void DropdownValuesInsert()
+        {
+            DropdownValues dv = DropdownValues.Load(1);
+
+            dv.id = 1;
+            dv.content = "I've been dropped down.";
+            dv.fieldId = 1;
+            dv.Insert();
+
+            DropdownValues dv1 = DropdownValues.Load(1);
+
+            Assert.AreEqual(dv1.id, 1);
+            Assert.AreEqual(dv1.content, "I've been dropped down.");
+            Assert.AreEqual(dv1.fieldId, 1);
+        }
+
+        [Test]
         public void DropdownValuesUpdate()
         {
             DropdownValues myDropdownValue = DropdownValues.Load(0);
@@ -31,7 +48,16 @@ namespace testsharp_lib_tests
 
             DropdownValues myDropdownValue2 = DropdownValues.Load(0);
             Assert.AreEqual(myDropdownValue2.content.ToString(), "oh, yeah!");
+        }
 
+        [Test]
+        public void DropdownValuesDelete()
+        {
+            DropdownValues dv = DropdownValues.Load(1);
+
+            dv.id = 1;
+
+            dv.Delete();
         }
     }
 }

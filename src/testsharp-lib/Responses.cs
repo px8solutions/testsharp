@@ -15,7 +15,7 @@ namespace testsharp.lib
         public int Ordinal { get; set; }
         public Questions Question { get; set; }
 
-    public static Responses Load(int id)
+        public static Responses Load(int id)
         {
             Db db = new Db();
 
@@ -37,7 +37,7 @@ namespace testsharp.lib
             return response;
         }
 
-    public void Insert()
+        public void Insert()
         {
             Db db = new Db();
 
@@ -54,7 +54,8 @@ namespace testsharp.lib
 
             db.Close();
         }
-    public void Update()
+
+        public void Update()
         {
             Db db = new Db();
 
@@ -62,8 +63,15 @@ namespace testsharp.lib
                 + Ordinal.ToString() + "'," + "question_id='" + 1 + "'where id ='"+Id.ToString()+"'");
 
             db.Close();
-
         }
-       
+        
+        public void Delete()
+        {
+            Db db = new Db();
+
+            db.ExecuteNonQuery("DELETE FROM responses WHERE id = " + Id);
+
+            db.Close();
+        }       
     }
 }

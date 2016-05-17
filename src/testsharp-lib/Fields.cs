@@ -68,12 +68,15 @@ namespace testsharp.lib
                 + Convert.ChangeType(FieldType, FieldType.GetTypeCode()) + "' where id="+ Db.Encode(id.ToString()));
 
             db.Close();
-
-
         }
 
+        public void Delete()
+        {
+            Db db = new Db();
 
+            db.ExecuteNonQuery("DELETE FROM fields WHERE id = " + id);
 
-       
+            db.Close();
+        }       
     }
 }
