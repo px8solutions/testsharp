@@ -67,9 +67,16 @@ namespace testsharp.lib
             db.ExecuteNonQuery("update question_categories set name='" + Name + "' where id=" + _id.ToString());
 
             db.Close();
-
         }
 
+        public void Delete()
+        {
+            Db db = new Db();
+
+            var reader = db.ExecuteNonQuery("DELETE FROM question_categories WHERE id = " + Id.ToString());
+
+            db.Close();
+        }
     }
 
 }

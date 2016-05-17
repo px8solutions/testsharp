@@ -35,5 +35,14 @@ namespace testsharp_lib_tests
             qc.Name = "Use JavaScript (25%)";
             qc.Update();
         }
+
+        [Test]
+        public void QuestionCategoryDelete()
+        {
+            QuestionCategories qc = QuestionCategories.Load(3);
+
+            qc.Id = 3;
+            qc.Delete();
+        }
     }
 }

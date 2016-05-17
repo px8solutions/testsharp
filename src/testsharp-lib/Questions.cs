@@ -55,6 +55,8 @@ namespace testsharp.lib
                 db.Close();
 
 
+                // This doesn't work, so I commented it out.
+                /*
                 // get all responses for each question and add to the responses[] array
                 Db db2 = new Db();
                 var reader2 = db2.ExecuteReader("select * from responses where question_id=" + id.ToString());
@@ -77,6 +79,7 @@ namespace testsharp.lib
                 // responses reader
                 reader2.Close();
                 db2.Close();
+                */
 
                 // questions reader
                 reader.Close();
@@ -138,6 +141,15 @@ namespace testsharp.lib
                 db.Close();
                 return 0;
             }            
+        }
+
+        public void Delete()
+        {
+            Db db = new Db();
+
+            var reader = db.ExecuteNonQuery("DELETE FROM questions WHERE id = " + Id.ToString());
+
+            db.Close();
         }
     }
 }

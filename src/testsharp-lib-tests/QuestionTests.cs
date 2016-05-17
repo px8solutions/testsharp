@@ -63,5 +63,14 @@ namespace testsharp_lib_tests
             upTest.ImageURL = "I hate images";
             upTest.Update();
         }
+
+        [Test]
+        public void QuestionDelete()
+        {
+            Questions question = Questions.Load(10);
+
+            question.Id = 10;
+            question.Delete();
+        }
     }
 }
