@@ -18,15 +18,20 @@ namespace testsharp_lib_tests
 
             Assert.AreEqual(dv1.id, 0);
             Assert.AreEqual(dv1.content, "fix the jqueries");
-            Assert.AreEqual(dv1.fieldId, 2);
+            Assert.AreEqual(dv1.fieldId, 2);    
+        }
 
-            /*
-            DropdownValues dv2 = DropdownValues.Load(1);
+        [Test]
+        public void DropdownValuesUpdate()
+        {
+            DropdownValues myDropdownValue = DropdownValues.Load(0);
 
-            Assert.AreEqual(dv2.id, 1);
-            Assert.AreEqual(dv2.content, "Kroger Brand Seltzer Water");
-            Assert.AreEqual(dv2.fieldId, 2);
-            */
+            myDropdownValue.content = "oh, yeah!";
+            myDropdownValue.Update();
+
+            DropdownValues myDropdownValue2 = DropdownValues.Load(0);
+            Assert.AreEqual(myDropdownValue2.content.ToString(), "oh, yeah!");
+
         }
     }
 }

@@ -47,7 +47,7 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            db.ExecuteNonQuery("UPDATE dropdown_values SET _content = '" + content + "," + "field_id = " + fieldId + "' WHERE id=" + id.ToString());
+            db.ExecuteNonQuery("UPDATE dropdown_values SET content = '" + content + "'," + "field_id = '" + fieldId + "' WHERE id='" + id.ToString()+"'");
         }
     }
 }
