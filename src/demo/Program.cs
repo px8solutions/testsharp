@@ -42,7 +42,7 @@ namespace demo
         static void ListTest()
         {
             object[,] array = Question.List();
-            Console.WriteLine(array[0,0].ToString());
+            Console.WriteLine(array[1,2]);
         }
 
         static void FieldTest()
