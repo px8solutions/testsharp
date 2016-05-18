@@ -56,11 +56,12 @@ namespace testsharp.lib
 
 
                 // This doesn't work, so I commented it out.
-                /*
+                
                 // get all responses for each question and add to the responses[] array
                 Db db2 = new Db();
                 var reader2 = db2.ExecuteReader("select * from responses where question_id=" + id.ToString());
                 Responses response = new Responses();
+
 
                 int resIndex = 0;
                 if (reader2.Read())
@@ -72,14 +73,14 @@ namespace testsharp.lib
                     response.Question = Questions.Load((int)reader["question_id"]);
 
                     // I'm not sure what to do here.
-                   // Responses[response] = response;
+                    //Responses[response] = response;
 
                     resIndex++;
                 }
                 // responses reader
                 reader2.Close();
                 db2.Close();
-                */
+                
 
                 // questions reader
                 reader.Close();
