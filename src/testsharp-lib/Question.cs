@@ -18,15 +18,15 @@ namespace testsharp.lib
         public Question Parent { get; set; }
         public String ImageURL { get; set; }
 
-        public Response[] Responses { get; set; }
-
-        
+        //public Response[] Responses { get; set; }
+        public List<Response> Responses{ get; set; }
 
         public static Question Load(int id)
         {
+            Db db = new Db(); //questions
+           // Db db2 = new Db(); //responses
+            
 
-
-            Db db = new Db();
             var reader = db.ExecuteReader("select * from questions where id=" + id.ToString());
 
             Question question = new Question();
@@ -49,16 +49,9 @@ namespace testsharp.lib
                     question.ImageURL = (string)reader["image_url"];
                 }
 
-
-
-                reader.Close();
-                db.Close();
-
-
-                // This doesn't work, so I commented it out.
-                /*
+                
                 // get all responses for each question and add to the responses[] array
-                Db db2 = new Db();
+                /*
                 var reader2 = db2.ExecuteReader("select * from responses where question_id=" + id.ToString());
                 Response response = new Response();
 
@@ -66,26 +59,29 @@ namespace testsharp.lib
                 int resIndex = 0;
                 if (reader2.Read())
                 {
-                    response.Id = (int)reader["id"];
-                    response.Content = (string)reader["content"];
-                    response.Correct = (Boolean)reader["correct"];
-                    response.Ordinal = (int)reader["ordinal"];
-                    response.Question = Question.Load((int)reader["question_id"]);
+                    response.Id = (int)reader2["id"];
+                    response.Content = (string)reader2["content"];
+                    response.Correct = (Boolean)reader2["correct"];
+                    response.Ordinal = (int)reader2["ordinal"];
+                    response.Question = Question.Load((int)reader2["question_id"]);
 
                     // I'm not sure what to do here.
-                    //Responses[response] = response;
+                    question.Responses.Add(response);
 
                     resIndex++;
                 }
-                // responses reader
                 reader2.Close();
-                db2.Close();
                 */
-
-                // questions reader
-                reader.Close();
-                db.Close();
             }
+            // responses reader
+           
+           // db2.Close();
+
+
+
+            // questions reader
+            reader.Close();
+            db.Close();
 
             return question;
         }
