@@ -14,7 +14,7 @@ namespace testsharp_lib_tests
         [Test]
         public void ResponseLoad()
         {
-            Responses myResponse = Responses.Load(1);
+            Response myResponse = Response.Load(1);
 
             Assert.AreEqual(myResponse.Id, 1);
             Assert.IsNotNull(myResponse.Ordinal);
@@ -25,10 +25,10 @@ namespace testsharp_lib_tests
         [Test]
         public void ResponseUpdate()
         {
-            Responses myResponse = Responses.Load(1);
+            Response myResponse = Response.Load(1);
             myResponse.Content = "wow";
             myResponse.Update();
-            myResponse = Responses.Load(1);
+            myResponse = Response.Load(1);
             Assert.AreEqual(myResponse.Content, "wow");
 
         }
@@ -36,7 +36,7 @@ namespace testsharp_lib_tests
         [Test]
         public void ResponseInsert()
         {
-            Responses myResponse = new Responses();
+            Response myResponse = new Response();
             myResponse.Id = 77;
             myResponse.Content = "test";
             myResponse.Correct = true;
@@ -44,14 +44,14 @@ namespace testsharp_lib_tests
             myResponse.Insert();
 
             //myResponse.Question = Questions.Load(1);
-            Responses tempResponse = Responses.Load(77);
+            Response tempResponse = Response.Load(77);
             Assert.AreEqual(tempResponse.Content.ToString(), "test");
         }
 
         [Test]
         public void ResponseDelete()
         {
-            Responses response = new Responses();
+            Response response = new Response();
             response.Id = 19;
             response.Delete();
         }

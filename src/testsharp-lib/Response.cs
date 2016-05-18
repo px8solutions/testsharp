@@ -7,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace testsharp.lib
 {
-    public class Responses
+    public class Response
     {
         public int Id { get; set; }
         public String Content { get; set; }
         public Boolean Correct { get; set; }
         public int Ordinal { get; set; }
-        public Questions Question { get; set; }
+        public Question Question { get; set; }
 
-        public static Responses Load(int id)
+        public static Response Load(int id)
         {
             Db db = new Db();
 
             var reader = db.ExecuteReader("select * from responses where id=" + id.ToString());
 
-            Responses response = new Responses();
+            Response response = new Response();
 
             if (reader.Read())
             {
@@ -29,7 +29,7 @@ namespace testsharp.lib
                 response.Content = (string)reader["content"];
                 response.Correct = (Boolean)reader["correct"];
                 response.Ordinal = (int)reader["ordinal"];
-                response.Question = Questions.Load((int)reader["question_id"]);
+                response.Question = Question.Load((int)reader["question_id"]);
             }
             reader.Close();
             db.Close();

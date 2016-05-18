@@ -9,7 +9,7 @@ using NUnit.Framework;
 namespace testsharp_lib_tests
 {
     [TestFixture]
-    public class QuestionCategoriesTests
+    public class QuestionCategoryTests
     {
         [Test]
         public void QuestionCategoryLoad()

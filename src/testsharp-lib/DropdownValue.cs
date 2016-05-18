@@ -7,19 +7,19 @@ using System.Data.SqlClient;
 
 namespace testsharp.lib
 {
-    public class DropdownValues
+    public class DropdownValue
     {
         public int id { get; set; }
         public string content { get; set; }
         public int fieldId { get; set; }
 
-        public static DropdownValues Load(int id)
+        public static DropdownValue Load(int id)
         {
             Db db = new Db();
 
             var reader = db.ExecuteReader("SELECT * FROM dropdown_values WHERE id=" + id.ToString());
 
-            DropdownValues dv = new DropdownValues();
+            DropdownValue dv = new DropdownValue();
 
             if (reader.Read())
             {

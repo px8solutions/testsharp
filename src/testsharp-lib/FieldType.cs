@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace testsharp.lib
 {
-    public enum FieldTypes
+    public enum FieldType
     {
         TextBox=0,
         DropDown=1,

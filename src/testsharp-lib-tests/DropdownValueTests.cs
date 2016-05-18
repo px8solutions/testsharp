@@ -9,12 +9,12 @@ using testsharp.lib;
 namespace testsharp_lib_tests
 {
     [TestFixture]
-    public class DropdownValuesTests
+    public class DropdownValueTests
     {
         [Test]
-        public void DropdownValuesLoad()
+        public void DropdownValueLoad()
         {
-            DropdownValues dv1 = DropdownValues.Load(0);
+            DropdownValue dv1 = DropdownValue.Load(0);
 
             Assert.AreEqual(dv1.id, 0);
             Assert.AreEqual(dv1.content, "fix the jqueries");
@@ -22,16 +22,16 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void DropdownValuesInsert()
+        public void DropdownValueInsert()
         {
-            DropdownValues dv = DropdownValues.Load(1);
+            DropdownValue dv = DropdownValue.Load(1);
 
             dv.id = 1;
             dv.content = "I've been dropped down.";
             dv.fieldId = 1;
             dv.Insert();
 
-            DropdownValues dv1 = DropdownValues.Load(1);
+            DropdownValue dv1 = DropdownValue.Load(1);
 
             Assert.AreEqual(dv1.id, 1);
             Assert.AreEqual(dv1.content, "I've been dropped down.");
@@ -39,24 +39,23 @@ namespace testsharp_lib_tests
         }
 
         [Test]
-        public void DropdownValuesUpdate()
+        public void DropdownValueUpdate()
         {
-            DropdownValues myDropdownValue = DropdownValues.Load(0);
+            DropdownValue myDropdownValue = DropdownValue.Load(0);
 
             myDropdownValue.content = "oh, yeah!";
             myDropdownValue.Update();
 
-            DropdownValues myDropdownValue2 = DropdownValues.Load(0);
+            DropdownValue myDropdownValue2 = DropdownValue.Load(0);
             Assert.AreEqual(myDropdownValue2.content.ToString(), "oh, yeah!");
         }
 
         [Test]
-        public void DropdownValuesDelete()
+        public void DropdownValueDelete()
         {
-            DropdownValues dv = DropdownValues.Load(1);
+            DropdownValue dv = DropdownValue.Load(1);
 
             dv.id = 1;
-
             dv.Delete();
         }
     }

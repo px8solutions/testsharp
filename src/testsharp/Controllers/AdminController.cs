@@ -9,14 +9,14 @@ namespace testsharp.Controllers
 {
     public class AdminController : Controller
     {
-        public static string[] QuestionContent = new string[Questions.GetMaxQuestions()];
+        public static string[] QuestionContent = new string[Question.GetMaxQuestions()];
 
         // GET: Admin
         public ActionResult Index()
         {
-            for (int i = 1; i <= Questions.GetMaxQuestions() - 1; i++)
+            for (int i = 1; i <= Question.GetMaxQuestions() - 1; i++)
             {
-                QuestionContent[i] = Questions.Load(i).Content;
+                QuestionContent[i] = Question.Load(i).Content;
             }
 
             return View();

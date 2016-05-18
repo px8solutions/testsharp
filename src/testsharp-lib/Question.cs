@@ -7,41 +7,41 @@ using System.Threading.Tasks;
 
 namespace testsharp.lib
 {
-    public class Questions
+    public class Question
     {
 
         public int Id { get; set; }
         public string Content { get; set; }
         public int Ordinal { get; set; }
-        public QuestionTypes QuestionType { get; set; }
+        public QuestionType QuestionType { get; set; }
         public QuestionCategories Category { get; set; }
-        public Questions Parent { get; set; }
+        public Question Parent { get; set; }
         public String ImageURL { get; set; }
 
-        public Responses[] Responses { get; set; }
+        public Response[] Responses { get; set; }
 
         
 
-        public static Questions Load(int id)
+        public static Question Load(int id)
         {
 
 
             Db db = new Db();
             var reader = db.ExecuteReader("select * from questions where id=" + id.ToString());
 
-            Questions question = new Questions();
+            Question question = new Question();
 
             if (reader.Read())
             {
                 question.Id = (int)reader["id"];
                 question.Content = (string)reader["content"];
                 question.Ordinal = (int)reader["ordinal"];
-                question.QuestionType = (QuestionTypes)reader["type_id"];
+                question.QuestionType = (QuestionType)reader["type_id"];
                 question.Category = QuestionCategories.Load((int)reader["category_id"]);
 
                 if (reader["parent_id"] != DBNull.Value)
                 {
-                    question.Parent = Questions.Load( (int)reader["parent_id"]);
+                    question.Parent = Question.Load( (int)reader["parent_id"]);
                 }
 
                 if (reader["image_url"] != DBNull.Value)
@@ -56,11 +56,11 @@ namespace testsharp.lib
 
 
                 // This doesn't work, so I commented it out.
-                
+                /*
                 // get all responses for each question and add to the responses[] array
                 Db db2 = new Db();
                 var reader2 = db2.ExecuteReader("select * from responses where question_id=" + id.ToString());
-                Responses response = new Responses();
+                Response response = new Response();
 
 
                 int resIndex = 0;
@@ -70,7 +70,7 @@ namespace testsharp.lib
                     response.Content = (string)reader["content"];
                     response.Correct = (Boolean)reader["correct"];
                     response.Ordinal = (int)reader["ordinal"];
-                    response.Question = Questions.Load((int)reader["question_id"]);
+                    response.Question = Question.Load((int)reader["question_id"]);
 
                     // I'm not sure what to do here.
                     //Responses[response] = response;
@@ -80,7 +80,7 @@ namespace testsharp.lib
                 // responses reader
                 reader2.Close();
                 db2.Close();
-                
+                */
 
                 // questions reader
                 reader.Close();

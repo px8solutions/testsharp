@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace testsharp.lib
 {
-   public enum QuestionTypes
+   public enum QuestionType
     {
         CaseStudy=0,
         MultipleChoiceSingle=1,

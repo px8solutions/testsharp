@@ -7,23 +7,23 @@ using System.Threading.Tasks;
 
 namespace testsharp.lib
 {
-    public class Fields
+    public class Field
     {
         public int id { get; set; }
         public int x { get; set; }
         public int y { get; set; }
         public int w { get; set; }
         public int h { get; set; }
-        public Responses Response { get; set; }
-        public FieldTypes FieldType { get; set; }
+        public Response Response { get; set; }
+        public FieldType FieldType { get; set; }
 
-        public static Fields Load(int id)
+        public static Field Load(int id)
         {
             Db db = new Db();
 
             var reader = db.ExecuteReader("SELECT * FROM fields WHERE id=" + id.ToString());
 
-            Fields field = new Fields();
+            Field field = new Field();
 
             if (reader.Read())
             {
@@ -32,8 +32,8 @@ namespace testsharp.lib
                 field.y = (short)reader["y"];
                 field.w = (short)reader["w"];
                 field.h = (short)reader["h"];
-                field.Response = Responses.Load((int)reader["response_id"]);
-                field.FieldType = (FieldTypes)reader["field_type_id"];
+                field.Response = Response.Load((int)reader["response_id"]);
+                field.FieldType = (FieldType)reader["field_type_id"];
             }
 
             reader.Close();

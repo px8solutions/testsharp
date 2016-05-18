@@ -29,7 +29,7 @@ namespace demo
 
         static void DropdownValueTest()
         {
-            DropdownValues dv = DropdownValues.Load(2);
+            DropdownValue dv = DropdownValue.Load(2);
             dv.id = 1;
             dv.content = "Kroger Brand Seltzer Water";
             dv.fieldId = 2;
@@ -40,7 +40,7 @@ namespace demo
 
         static void FieldTest()
         {
-            Fields field = Fields.Load(0);
+            Field field = Field.Load(0);
             Console.WriteLine(field.FieldType);
         }
 

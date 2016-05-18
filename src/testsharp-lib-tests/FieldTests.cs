@@ -14,31 +14,31 @@ namespace testsharp_lib_tests
         [Test]
         public void FieldLoad()
         {
-            Fields field = Fields.Load(1);
+            Field field = Field.Load(1);
 
             Assert.AreEqual(field.id, 1);
             Assert.AreEqual(field.x, 21);
             Assert.AreEqual(field.y, 32);
             Assert.AreEqual(field.w, 30);
             Assert.AreEqual(field.h, 10);
-            Assert.AreEqual(field.Response.Id, Responses.Load(6).Id);
-            Assert.AreEqual(field.FieldType, FieldTypes.TextBox);
+            Assert.AreEqual(field.Response.Id, Response.Load(6).Id);
+            Assert.AreEqual(field.FieldType, FieldType.TextBox);
         }
 
         [Test]
         public void FieldUpdate()
         {
 
-            Fields myField = Fields.Load(2);
+            Field myField = Field.Load(2);
             myField.h = 77;
             myField.Update();
-            Assert.AreEqual(Fields.Load(2).h, 77);
+            Assert.AreEqual(Field.Load(2).h, 77);
         }
 
         [Test]
         public void FieldInsert()
         {
-            Fields myField = new Fields();
+            Field myField = new Field();
             myField.id = 8080;
             myField.x = 7;
             myField.y = 8;
@@ -50,7 +50,7 @@ namespace testsharp_lib_tests
         [Test]
         public void FieldDelete()
         {
-            Fields field = Fields.Load(3);
+            Field field = Field.Load(3);
             field.id = 3;
             field.Delete();
         }
