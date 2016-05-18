@@ -21,10 +21,11 @@ namespace demo
             //c.Name = "Foo";
             //c.Insert();
 
-            Console.WriteLine(c.Id + " "+c.Name);
+            Console.WriteLine(c.Id + " " + c.Name);
 
             //DropdownValueTest();
             FieldTest();
+            ListTest();
         }
 
         static void DropdownValueTest()
@@ -36,6 +37,12 @@ namespace demo
             dv.Insert();
 
             Console.WriteLine("Inserted to dropdown_values, " + dv.fieldId + ", " + dv.content);
+        }
+
+        static void ListTest()
+        {
+            object[,] array = Question.List();
+            Console.WriteLine(array[0,0].ToString());
         }
 
         static void FieldTest()

@@ -166,6 +166,8 @@ namespace testsharp.lib
                 values[i, 7] = reader["parent_id"];
             }
 
+            db.Close();
+
             return values;
         }
     }
