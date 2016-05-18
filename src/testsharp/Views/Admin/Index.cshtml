@@ -13,10 +13,9 @@
             <h3 style="border-bottom: solid 2px black;">Questions</h3>
 
             @{
-                for (int i = 1; i <= testsharp.lib.Questions.GetMaxQuestions() - 1; i++)
+                for (int i = 1; i <= testsharp.lib.Question.GetMaxQuestions() - 1; i++)
                 {
                     ViewBag.i = i + ". " + testsharp.Controllers.AdminController.QuestionContent[i];
-                    
                     // I have no idea if this is the right way to do this, but I'm doin' it.
                     <a href="~/Admin/Index">@ViewBag.i</a><br />
                 }

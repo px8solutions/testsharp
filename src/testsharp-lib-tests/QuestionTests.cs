@@ -72,5 +72,11 @@ namespace testsharp_lib_tests
             question.Id = 10;
             question.Delete();
         }
+
+        [Test]
+        public void QuestionList()
+        {
+            Question.List();
+        }
     }
 }

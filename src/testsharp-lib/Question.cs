@@ -152,5 +152,25 @@ namespace testsharp.lib
 
             db.Close();
         }
+
+        public static object[,] List()
+        {
+            object[,] values = new object[Question.GetMaxQuestions(),7];
+            Db db = new Db();
+
+            for (int i=1;i>Question.GetMaxQuestions();i++)
+            {
+                var reader = db.ExecuteReader("SELECT * FROM questions WHERE id = " + i);
+                values[i, 1] = reader["id"];
+                values[i, 2] = reader["content"];
+                values[i, 3] = reader["ordinal"];
+                values[i, 4] = reader["image_url"];
+                values[i, 5] = reader["type_id"];
+                values[i, 6] = reader["category_id"];
+                values[i, 7] = reader["parent_id"];
+            }
+
+            return values;
+        }
     }
 }
