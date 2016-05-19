@@ -24,7 +24,7 @@ namespace testsharp.lib
         public static Question Load(int id)
         {
             Db db = new Db(); //questions
-           // Db db2 = new Db(); //responses
+            Db db2 = new Db(); //responses
             
 
             var reader = db.ExecuteReader("select * from questions where id=" + id.ToString());
@@ -49,34 +49,36 @@ namespace testsharp.lib
                     question.ImageURL = (string)reader["image_url"];
                 }
 
+                // get all responses for each question and add to the responses<> list
+  
+             }
                 
-                // get all responses for each question and add to the responses[] array
-                /*
                 var reader2 = db2.ExecuteReader("select * from responses where question_id=" + id.ToString());
-                Response response = new Response();
+                
+                 Response response = new Response();
 
 
                 int resIndex = 0;
-                if (reader2.Read())
+                while (reader2.Read())
                 {
                     response.Id = (int)reader2["id"];
                     response.Content = (string)reader2["content"];
                     response.Correct = (Boolean)reader2["correct"];
                     response.Ordinal = (int)reader2["ordinal"];
-                    response.Question = Question.Load((int)reader2["question_id"]);
+                // response.Question = Question.Load((int)reader2["question_id"]);
+                //response.Question = new Question();
 
-                    // I'm not sure what to do here.
-                    question.Responses.Add(response);
+
+               // question.Responses.Add(response);
 
                     resIndex++;
                 }
                 reader2.Close();
-                */
-            }
-            // responses reader
-           
-           // db2.Close();
+            
 
+            // responses reader
+            
+            db2.Close();
 
 
             // questions reader
