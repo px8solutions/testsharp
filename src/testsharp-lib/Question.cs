@@ -162,9 +162,7 @@ namespace testsharp.lib
                     values[i, 3] = reader["image_url"].ToString();
                     values[i, 4] = reader["type_id"];
                     values[i, 5] = reader["category_id"];
-                    values[i, 6] = reader["parent_id"];
-
-                    
+                    values[i, 6] = reader["parent_id"];                   
 
                     reader.Close();
                 }

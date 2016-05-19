@@ -39,10 +39,15 @@ namespace demo
             Console.WriteLine("Inserted to dropdown_values, " + dv.fieldId + ", " + dv.content);
         }
 
+        // tests the list method in questions, returns content where id is 1.
         static void ListTest()
         {
             object[,] array = Question.List();
-            Console.WriteLine(array[1,2]);
+            Console.WriteLine(array[1,1]);
+
+            Console.WriteLine(QuestionCategories.GetMax());
+            object[,] catarray = QuestionCategories.List();
+            Console.WriteLine(catarray[0, 1]);
         }
 
         static void FieldTest()

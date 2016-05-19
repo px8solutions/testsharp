@@ -13,7 +13,7 @@ namespace migration
         public override void Up()
         {
             Create.Table("question_categories")
-                .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
+                .WithColumn("id").AsInt32().NotNullable().Identity().PrimaryKey()
                 .WithColumn("name").AsString().NotNullable();
 
             Create.Table("question_types")
@@ -29,7 +29,7 @@ namespace migration
             Insert.IntoTable("question_types").Row(new { id = 6, name = "CreateDoubleList" });
 
             Create.Table("questions")
-                .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
+                .WithColumn("id").AsInt32().NotNullable().Identity().PrimaryKey()
                 .WithColumn("content").AsString().NotNullable()
                 .WithColumn("ordinal").AsInt32().NotNullable()
                 .WithColumn("image_url").AsString().Nullable()
@@ -38,7 +38,7 @@ namespace migration
                 .WithColumn("parent_id").AsInt32().Nullable().ForeignKey("questions", "id");
 
             Create.Table("responses")
-                .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
+                .WithColumn("id").AsInt32().NotNullable().Identity().PrimaryKey()
                 .WithColumn("content").AsString().NotNullable()
                 .WithColumn("correct").AsBoolean().NotNullable()
                 .WithColumn("ordinal").AsInt32().NotNullable()
@@ -53,7 +53,7 @@ namespace migration
             Insert.IntoTable("field_types").Row(new { id = 2, name = "Checkmark" });
 
             Create.Table("fields")
-                .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
+                .WithColumn("id").AsInt32().NotNullable().Identity().PrimaryKey()
                 .WithColumn("x").AsInt16().NotNullable() //not nullable appears to be implicit, also needs to be nullable for checkmark type.
                 .WithColumn("y").AsInt16().NotNullable()
                 .WithColumn("w").AsInt16().NotNullable()
@@ -63,7 +63,7 @@ namespace migration
 
 
             Create.Table("dropdown_values")
-                .WithColumn("id").AsInt32().NotNullable().PrimaryKey()
+                .WithColumn("id").AsInt32().NotNullable().Identity().PrimaryKey()
                 .WithColumn("content").AsString().NotNullable()
                 .WithColumn("field_id").AsInt32().NotNullable().ForeignKey("fields", "id");
         }
