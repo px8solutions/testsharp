@@ -51,7 +51,7 @@ namespace testsharp.lib
                 insertResponseId = Response.Id.ToString();
             }
 
-            db.ExecuteNonQuery("insert into fields values("+Db.Encode(id.ToString())+","+Db.Encode(x.ToString())
+            db.ExecuteNonQuery("insert into fields values(" /*+Db.Encode(id.ToString())+","*/+Db.Encode(x.ToString())
                 +","+Db.Encode(y.ToString())+","+Db.Encode(w.ToString())+","+Db.Encode(h.ToString())+","
                 +"'"+ insertResponseId + "',"
                 +"'"+Convert.ChangeType(FieldType, FieldType.GetTypeCode())+"'"+")");

@@ -38,7 +38,7 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            db.ExecuteNonQuery("INSERT INTO dropdown_values VALUES (" + id.ToString() + "," + Db.Encode(content) + "," + fieldId.ToString() + ")");
+            db.ExecuteNonQuery("INSERT INTO dropdown_values VALUES ("/* + id.ToString() + ","*/ + Db.Encode(content) + "," + fieldId.ToString() + ")");
 
             db.Close();
         }

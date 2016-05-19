@@ -29,7 +29,8 @@ namespace testsharp.lib
                 response.Content = (string)reader["content"];
                 response.Correct = (Boolean)reader["correct"];
                 response.Ordinal = (int)reader["ordinal"];
-                response.Question = Question.Load((int)reader["question_id"]);
+                //response.Question = Question.Load((int)reader["question_id"]);
+                response.Question = new Question();
             }
             reader.Close();
             db.Close();
@@ -49,7 +50,7 @@ namespace testsharp.lib
 
             //db.ExecuteNonQuery("insert into Responses values (" + Id.ToString() + ",'" + Content + ",'" +Correct.ToString()+"','"+Ordinal.ToString()+"',"+ insertQuestionId + "')");
 
-            db.ExecuteNonQuery("insert into Responses (id,content,correct,ordinal,question_id) values ("+Db.Encode(Id.ToString()) + "," + Db.Encode(Content.ToString()) 
+            db.ExecuteNonQuery("insert into Responses (content,correct,ordinal,question_id) values ("+ Db.Encode(Content.ToString()) 
                 +","+Db.Encode(Correct.ToString()) + "," + Db.Encode(Ordinal.ToString()) + "," + Db.Encode(insertQuestionId) + ")");
 
             db.Close();

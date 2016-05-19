@@ -37,14 +37,14 @@ namespace testsharp_lib_tests
         public void ResponseInsert()
         {
             Response myResponse = new Response();
-            myResponse.Id = 77;
+            //myResponse.Id = 77;
             myResponse.Content = "test";
             myResponse.Correct = true;
             myResponse.Ordinal = 108;
             myResponse.Insert();
 
             //myResponse.Question = Questions.Load(1);
-            Response tempResponse = Response.Load(77);
+            Response tempResponse = Response.Load(20);
             Assert.AreEqual(tempResponse.Content.ToString(), "test");
         }
 

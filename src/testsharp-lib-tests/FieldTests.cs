@@ -22,7 +22,7 @@ namespace testsharp_lib_tests
             Assert.AreEqual(field.w, 30);
             Assert.AreEqual(field.h, 10);
             Assert.AreEqual(field.Response.Id, Response.Load(6).Id);
-            Assert.AreEqual(field.FieldType, FieldType.TextBox);
+            Assert.AreEqual(field.FieldType, FieldType.DropDown);
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace testsharp_lib_tests
         public void FieldInsert()
         {
             Field myField = new Field();
-            myField.id = 8080;
+            //myField.id = 8080;
             myField.x = 7;
             myField.y = 8;
             myField.w = 9;

@@ -24,7 +24,7 @@ namespace testsharp.lib
         public static Question Load(int id)
         {
             Db db = new Db(); //questions
-            Db db2 = new Db(); //responses
+            //Db db2 = new Db(); //responses
             
 
             var reader = db.ExecuteReader("select * from questions where id=" + id.ToString());
@@ -52,7 +52,7 @@ namespace testsharp.lib
                 // get all responses for each question and add to the responses<> list
   
              }
-                
+                /*
                 var reader2 = db2.ExecuteReader("select * from responses where question_id=" + id.ToString());
                 
                  Response response = new Response();
@@ -79,7 +79,7 @@ namespace testsharp.lib
             // responses reader
             
             db2.Close();
-
+            */
 
             // questions reader
             reader.Close();
