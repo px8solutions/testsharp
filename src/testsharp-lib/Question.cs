@@ -106,16 +106,10 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            db.ExecuteNonQuery("update Questions set content=" + Db.Encode(Content) + ", image_url=" + Db.Encode(ImageURL) + ", ordinal =" + Ordinal.ToString() + ", category_id=" + Category.Id.ToString() + ", parent_id=" + Parent.Id.ToString() + ", type_id=" + Convert.ChangeType(QuestionType, QuestionType.GetTypeCode()) + "where id=" + Id);
+            db.ExecuteNonQuery("update Questions set content=" + Db.Encode(Content) + ", image_url=" + Db.Encode(ImageURL) 
+                + ", ordinal =" + Ordinal.ToString() + ", category_id=" + Category.Id.ToString() + ", parent_id=" 
+                + Parent.Id.ToString() + ", type_id=" + Convert.ChangeType(QuestionType, QuestionType.GetTypeCode()) + "where id=" + Id);
 
-            /*db.ExecuteNonQuery("Update Questions set content=" + Db.Encode(Content) + "Ordinal=" + Db.Encode(Ordinal.ToString()) + "type_id=" 
-                + Db.Encode(QuestionType.ToString()) + "Category_id=" + Db.Encode(Category.Id.ToString()) + "parent_id="+Db.Encode(Parent.Id.ToString())
-                +"image_url="+Db.Encode(ImageURL.ToString()));
-                */
-
-           // db.ExecuteNonQuery("update values set " + "content='" + Content + "',"
-           //     + "Ordinal='" + Ordinal.ToString() + "'," + "type_id='" + QuestionType.ToString() + "'," + "Category_id='"
-           //     + Category.Id.ToString() + "'," + "parent_id='" + Parent.Id.ToString() + "'," + "image_url='" + ImageURL.ToString()+"where id ='"+Id.ToString()+"')");
 
             db.Close();
         }
@@ -129,7 +123,8 @@ namespace testsharp.lib
 
             if (reader.Read())
             {
-                Int32.TryParse(reader["max"].ToString(), out _castedInt);
+                _castedInt = 5;
+                 var worked = Int32.TryParse(reader["max"].ToString(), out _castedInt);
                 db.Close();
                 return _castedInt;
             }
@@ -153,19 +148,23 @@ namespace testsharp.lib
         {
             object[,] values = new object[Question.GetMaxQuestions(),7];
             Db db = new Db();
-
-            for (int i=1;i>Question.GetMaxQuestions();i++)
+            
+            for (int i=1;i<Question.GetMaxQuestions();i++)
             {
-                var reader = db.ExecuteReader("SELECT * FROM questions WHERE id = " + i);
+               var reader = db.ExecuteReader("SELECT * FROM questions WHERE id = " + i);
                 if (reader.Read())
                 {
-                    values[i, 1] = reader["id"];
-                    values[i, 2] = reader["content"].ToString();
-                    values[i, 3] = reader["ordinal"];
-                    values[i, 4] = reader["image_url"].ToString();
-                    values[i, 5] = reader["type_id"];
-                    values[i, 6] = reader["category_id"];
-                    values[i, 7] = reader["parent_id"];
+                    values[i, 0] = reader["id"];
+                    values[i, 1] = reader["content"].ToString();
+                    values[i, 2] = reader["ordinal"];
+                    values[i, 3] = reader["image_url"].ToString();
+                    values[i, 4] = reader["type_id"];
+                    values[i, 5] = reader["category_id"];
+                    values[i, 6] = reader["parent_id"];
+
+                    
+
+                    reader.Close();
                 }
             }
 

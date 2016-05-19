@@ -76,7 +76,9 @@ namespace testsharp_lib_tests
         [Test]
         public void QuestionList()
         {
+            var a =Question.GetMaxQuestions();
             Question.List();
+            
         }
     }
 }
