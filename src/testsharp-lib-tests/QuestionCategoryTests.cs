@@ -14,14 +14,14 @@ namespace testsharp_lib_tests
         [Test]
         public void QuestionCategoryLoad()
         {
-            QuestionCategories qc = QuestionCategories.Load(0);
+            QuestionCategories qc = QuestionCategories.Load(3);
+            Assert.AreEqual(qc.Name, "Two");
         }
 
         [Test]
         public void QuestionCategoryInsert()
         {
-            QuestionCategories qc = QuestionCategories.Load(1);
-            qc.Id = 4;
+            QuestionCategories qc = QuestionCategories.Load(2);
             qc.Name = "Use jQuery (25%)";
             qc.Insert();
         }
@@ -31,7 +31,7 @@ namespace testsharp_lib_tests
         {
 
             QuestionCategories qc = QuestionCategories.Load(1);
-            qc.Id = 5;
+            qc.Id = 1;
             qc.Name = "Use JavaScript (25%)";
             qc.Update();
         }
@@ -39,9 +39,9 @@ namespace testsharp_lib_tests
         [Test]
         public void QuestionCategoryDelete()
         {
-            QuestionCategories qc = QuestionCategories.Load(3);
+            QuestionCategories qc = QuestionCategories.Load(4);
 
-            qc.Id = 3;
+            qc.Id = 4;
             qc.Delete();
         }
     }

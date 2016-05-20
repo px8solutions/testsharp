@@ -47,7 +47,7 @@ namespace demo
 
             Console.WriteLine(QuestionCategories.GetMax());
             object[,] catarray = QuestionCategories.List();
-            Console.WriteLine(catarray[0, 1]);
+            Console.WriteLine(catarray[1, 1]);
         }
 
         static void FieldTest()

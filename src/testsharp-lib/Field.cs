@@ -41,7 +41,7 @@ namespace testsharp.lib
 
             return field;
         }
-        public void Insert()
+        public int Insert()
         {
             Db db = new Db();
 
@@ -51,12 +51,27 @@ namespace testsharp.lib
                 insertResponseId = Response.Id.ToString();
             }
 
+            int maxID;
+
+            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM fields");
+            if (reader.Read())
+            {
+                maxID = (int)reader["max"];
+            }
+            else
+            {
+                maxID = 0;
+            }
+            reader.Close();
+
             db.ExecuteNonQuery("insert into fields values(" /*+Db.Encode(id.ToString())+","*/+Db.Encode(x.ToString())
                 +","+Db.Encode(y.ToString())+","+Db.Encode(w.ToString())+","+Db.Encode(h.ToString())+","
                 +"'"+ insertResponseId + "',"
                 +"'"+Convert.ChangeType(FieldType, FieldType.GetTypeCode())+"'"+")");
 
             db.Close();
+
+            return maxID + 1;
         }
 
         public void Update()

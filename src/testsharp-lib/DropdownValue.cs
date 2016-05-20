@@ -34,13 +34,28 @@ namespace testsharp.lib
             return dv;           
         }
 
-        public void Insert()
+        public int Insert()
         {
             Db db = new Db();
+
+            int maxID;
+
+            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM dropdown_values");
+            if (reader.Read())
+            {
+                maxID = (int)reader["max"];
+            }
+            else
+            {
+                maxID = 0;
+            }
+            reader.Close();
 
             db.ExecuteNonQuery("INSERT INTO dropdown_values VALUES ("/* + id.ToString() + ","*/ + Db.Encode(content) + "," + fieldId.ToString() + ")");
 
             db.Close();
+
+            return maxID;
         }
 
         public void Update()

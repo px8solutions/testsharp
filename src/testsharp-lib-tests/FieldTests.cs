@@ -44,7 +44,7 @@ namespace testsharp_lib_tests
             myField.y = 8;
             myField.w = 9;
             myField.h = 22;
-            myField.Insert();
+            System.Diagnostics.Debug.WriteLine(myField.Insert());
         }
 
         [Test]

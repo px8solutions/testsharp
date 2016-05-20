@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using testsharp.lib;
+using System.Diagnostics;
 
 namespace testsharp_lib_tests
 {
@@ -41,7 +42,7 @@ namespace testsharp_lib_tests
             myResponse.Content = "test";
             myResponse.Correct = true;
             myResponse.Ordinal = 108;
-            myResponse.Insert();
+            Debug.WriteLine(myResponse.Insert());
 
             //myResponse.Question = Questions.Load(1);
             Response tempResponse = Response.Load(20);

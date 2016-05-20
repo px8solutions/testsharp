@@ -51,9 +51,8 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-
             //need id on insert
-            db.ExecuteNonQuery("insert into question_categories values (" + _id.ToString() + ",'" + Name + "')");
+            db.ExecuteNonQuery("insert into question_categories values (" + Db.Encode(Name) + ")");
 
             db.Close();
 

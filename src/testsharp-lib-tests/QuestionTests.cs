@@ -14,12 +14,15 @@ namespace testsharp_lib_tests
         [Test]
         public void QuestionLoad()
         {
-            Question myQuestion = Question.Load(6);
+            Question myQuestion = Question.Load(2);
 
-            Assert.AreEqual(myQuestion.Id, 6,"id not equal.");
+            Assert.AreEqual(myQuestion.Id, 2);
             Assert.IsNotNull(myQuestion.Ordinal);
             Assert.IsNotNull(myQuestion.Content);
-            Assert.AreEqual(myQuestion.QuestionType, QuestionType.CreateDoubleList,"type not equal.");     
+            Assert.AreEqual(myQuestion.QuestionType, QuestionType.CreateDoubleList);
+            Assert.AreEqual(myQuestion.ImageURL, "NULL");
+            Assert.AreEqual(myQuestion.Category.Id, QuestionCategories.Load(2).Id);
+            Assert.AreEqual(myQuestion.Parent.Id, Question.Load(2).Id);
         }
 
         [Test]

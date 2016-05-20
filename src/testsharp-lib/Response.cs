@@ -38,9 +38,11 @@ namespace testsharp.lib
             return response;
         }
 
-        public void Insert()
+        public int Insert()
         {
             Db db = new Db();
+
+            int maxID;
 
             string insertQuestionId = "1";
             if (Question!=null)
@@ -48,12 +50,25 @@ namespace testsharp.lib
                 insertQuestionId = Question.Id.ToString();
             }
 
+            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM responses");
+            if (reader.Read())
+            {
+                maxID = (int)reader["max"];
+            }
+            else
+            {
+                maxID = 0;
+            }
+            reader.Close();
+
             //db.ExecuteNonQuery("insert into Responses values (" + Id.ToString() + ",'" + Content + ",'" +Correct.ToString()+"','"+Ordinal.ToString()+"',"+ insertQuestionId + "')");
 
             db.ExecuteNonQuery("insert into Responses (content,correct,ordinal,question_id) values ("+ Db.Encode(Content.ToString()) 
                 +","+Db.Encode(Correct.ToString()) + "," + Db.Encode(Ordinal.ToString()) + "," + Db.Encode(insertQuestionId) + ")");
 
             db.Close();
+
+            return maxID + 1;
         }
 
         public void Update()
