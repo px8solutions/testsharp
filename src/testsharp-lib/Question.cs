@@ -97,7 +97,7 @@ namespace testsharp.lib
                 ImageURL = "NULL";
             }
 
-            db.ExecuteNonQuery("insert into questions values (" + Id.ToString() + "," + Db.Encode(Content.ToString()) + ","
+            db.ExecuteNonQuery("insert into questions values (" + Db.Encode(Content.ToString()) + ","
                 + Ordinal.ToString() + "," + Db.Encode(ImageURL.ToString()) + "," + Convert.ChangeType(QuestionType, QuestionType.GetTypeCode()) 
                 + "," + Category.Id.ToString() + "," + Parent.Id.ToString() + ")");
 
