@@ -42,14 +42,14 @@ namespace testsharp_lib_tests
             myQuestion.Insert();
 
             // match inserted data
-            Question insTest = Question.Load(10);
+            Question insTest = Question.Load(4);
 
-            Assert.AreEqual(insTest.Id, 10);
-            Assert.AreEqual(insTest.Content, "How do you compile your JSONs?");
+            Assert.AreEqual(insTest.Id, 4);
+            Assert.AreEqual(insTest.Content, "what is an HTML?");
             Assert.AreEqual(insTest.Ordinal, 1);
-            Assert.AreEqual(insTest.QuestionType, QuestionType.MultipleChoiceSingle);
-            Assert.AreEqual(insTest.Category.Id, QuestionCategories.Load(1).Id);
-            Assert.AreEqual(insTest.Parent.Id, Question.Load(5).Id);
+            Assert.AreEqual(insTest.QuestionType, QuestionType.MultipleChoiceMultiple);
+            Assert.AreEqual(insTest.Category.Id, QuestionCategories.Load(2).Id);
+            Assert.AreEqual(insTest.Parent.Id, "NULL");
             Assert.AreEqual(insTest.ImageURL, "NULL");
         }
 

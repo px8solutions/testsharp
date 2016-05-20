@@ -88,9 +88,22 @@ namespace testsharp.lib
             return question;
         }
 
-        public void Insert()
+        public int Insert()
         {
             Db db = new Db();
+
+            int maxID;
+
+            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM questions");
+            if (reader.Read())
+            {
+                maxID = (int)reader["max"];
+            }
+            else
+            {
+                maxID = 0;
+            }
+            reader.Close();
 
             if (ImageURL == null)
             {
@@ -102,6 +115,8 @@ namespace testsharp.lib
                 + "," + Category.Id.ToString() + "," + Parent.Id.ToString() + ")");
 
             db.Close();
+
+            return maxID + 1;
         }
 
         public void Update()

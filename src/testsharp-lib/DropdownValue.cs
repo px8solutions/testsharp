@@ -55,7 +55,7 @@ namespace testsharp.lib
 
             db.Close();
 
-            return maxID;
+            return maxID + 1;
         }
 
         public void Update()
