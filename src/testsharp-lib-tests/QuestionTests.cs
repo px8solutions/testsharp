@@ -19,6 +19,7 @@ namespace testsharp_lib_tests
             Assert.AreEqual(myQuestion.Id, 2);
             Assert.IsNotNull(myQuestion.Ordinal);
             Assert.IsNotNull(myQuestion.Content);
+
             Assert.AreEqual(myQuestion.QuestionType, QuestionType.CreateDoubleList);
             Assert.AreEqual(myQuestion.ImageURL, "NULL");
             Assert.AreEqual(myQuestion.Category.Id, QuestionCategories.Load(2).Id);
@@ -31,11 +32,11 @@ namespace testsharp_lib_tests
             // insert new data
             Question myQuestion = Question.Load(10);
 
-            myQuestion.Id = 10;
+           // myQuestion.Id = 10;
             myQuestion.Content = "How do you compile your JSONs?";
             myQuestion.Ordinal = 1;
             myQuestion.QuestionType = QuestionType.MultipleChoiceSingle;
-            myQuestion.Category = QuestionCategories.Load(0);
+            myQuestion.Category = QuestionCategories.Load(1);
             myQuestion.Parent = Question.Load(5);
             myQuestion.ImageURL = null;
             myQuestion.Insert();
@@ -47,7 +48,7 @@ namespace testsharp_lib_tests
             Assert.AreEqual(insTest.Content, "How do you compile your JSONs?");
             Assert.AreEqual(insTest.Ordinal, 1);
             Assert.AreEqual(insTest.QuestionType, QuestionType.MultipleChoiceSingle);
-            Assert.AreEqual(insTest.Category.Id, QuestionCategories.Load(0).Id);
+            Assert.AreEqual(insTest.Category.Id, QuestionCategories.Load(1).Id);
             Assert.AreEqual(insTest.Parent.Id, Question.Load(5).Id);
             Assert.AreEqual(insTest.ImageURL, "NULL");
         }
@@ -61,7 +62,7 @@ namespace testsharp_lib_tests
             upTest.Content = "True or False: Screaming into the void for hours on end will make JavaScript write itself.";
             upTest.Ordinal = 2;
             upTest.QuestionType = QuestionType.MultipleChoiceSingle;
-            upTest.Category = QuestionCategories.Load(0);
+            upTest.Category = QuestionCategories.Load(1);
             upTest.Parent = Question.Load(5);
             upTest.ImageURL = "I hate images";
             upTest.Update();

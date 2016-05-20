@@ -19,7 +19,7 @@ namespace testsharp_lib_tests
 
             Assert.AreEqual(dv1.id, 2);
             Assert.AreEqual(dv1.content, "oh, yeah!");
-            Assert.AreEqual(dv1.fieldId, 2);    
+            Assert.AreEqual(dv1.fieldId, 1);    
         }
 
         [Test]

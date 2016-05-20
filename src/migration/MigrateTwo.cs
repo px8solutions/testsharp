@@ -23,11 +23,11 @@ namespace migration
             //CaseStudy
             Insert.IntoTable("questions").Row(new { content = "Do a case study, press b to fire.", ordinal = 0, type_id = 1, category_id = 1 });
 
-            Insert.IntoTable("questions").Row(new { content = "pick one", ordinal = 1, type_id = 1, category_id = 2, parent_id = 2 });
+            Insert.IntoTable("questions").Row(new { content = "pick one", ordinal = 1, type_id = 1, category_id = 2, parent_id = 1 });
             Insert.IntoTable("responses").Row(new { content = "yellow", correct = false, ordinal = 1, question_id = 2 });
             Insert.IntoTable("responses").Row(new { content = "double blue", correct = true, ordinal = 2, question_id = 2 });
 
-            Insert.IntoTable("questions").Row(new { content = "pick one also", ordinal = 1, type_id = 1, category_id = 3, parent_id = 3 });
+            Insert.IntoTable("questions").Row(new { content = "pick one also", ordinal = 1, type_id = 1, category_id = 3, parent_id = 2 });
             Insert.IntoTable("responses").Row(new { content = "GOTO(77);", correct = true, ordinal = 1, question_id = 3 });
             Insert.IntoTable("responses").Row(new { content = "Tuesday", correct = true, ordinal = 2, question_id = 3 });
 
