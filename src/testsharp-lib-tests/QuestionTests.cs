@@ -20,10 +20,10 @@ namespace testsharp_lib_tests
             Assert.IsNotNull(myQuestion.Ordinal);
             Assert.IsNotNull(myQuestion.Content);
 
-            Assert.AreEqual(myQuestion.QuestionType, QuestionType.CreateDoubleList);
-            Assert.AreEqual(myQuestion.ImageURL, "NULL");
+            Assert.AreEqual(myQuestion.QuestionType, QuestionType.MultipleChoiceSingle);
+            Assert.AreEqual(myQuestion.ImageURL, null);
             Assert.AreEqual(myQuestion.Category.Id, QuestionCategories.Load(2).Id);
-            Assert.AreEqual(myQuestion.Parent.Id, Question.Load(2).Id);
+            Assert.AreEqual(myQuestion.Parent.Id, Question.Load(1).Id);
         }
 
         [Test]
@@ -35,7 +35,7 @@ namespace testsharp_lib_tests
            // myQuestion.Id = 10;
             myQuestion.Content = "How do you compile your JSONs?";
             myQuestion.Ordinal = 1;
-            myQuestion.QuestionType = QuestionType.MultipleChoiceSingle;
+            myQuestion.QuestionType = QuestionType.MultipleChoiceMultiple;
             myQuestion.Category = QuestionCategories.Load(1);
             myQuestion.Parent = Question.Load(5);
             myQuestion.ImageURL = null;
@@ -47,10 +47,10 @@ namespace testsharp_lib_tests
             Assert.AreEqual(insTest.Id, 4);
             Assert.AreEqual(insTest.Content, "what is an HTML?");
             Assert.AreEqual(insTest.Ordinal, 1);
-            Assert.AreEqual(insTest.QuestionType, QuestionType.MultipleChoiceMultiple);
+            Assert.AreEqual(insTest.QuestionType, QuestionType.MultipleChoiceSingle);
             Assert.AreEqual(insTest.Category.Id, QuestionCategories.Load(2).Id);
-            Assert.AreEqual(insTest.Parent.Id, "NULL");
-            Assert.AreEqual(insTest.ImageURL, "NULL");
+            //Assert.AreEqual(insTest.Parent.Id, "NULL");
+            Assert.AreEqual(insTest.ImageURL, null);
         }
 
         [Test]

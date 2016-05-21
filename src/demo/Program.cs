@@ -42,8 +42,8 @@ namespace demo
         // tests the list method in questions, returns content where id is 1.
         static void ListTest()
         {
-            object[,] array = Question.List();
-            Console.WriteLine(array[1,1]);
+            Question[] array = Question.List();
+            Console.WriteLine(array[0]);
 
             Console.WriteLine(QuestionCategories.GetMax());
             object[,] catarray = QuestionCategories.List();

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -161,31 +162,48 @@ namespace testsharp.lib
             db.Close();
         }
 
-        public static object[,] List()
-        {
-            object[,] values = new object[Question.GetMaxQuestions(),7];
-            Db db = new Db();
+        //public static object[,] List()
+        //{
+        //    object[,] values = new object[Question.GetMaxQuestions(),7];
+        //    Db db = new Db();
             
-            for (int i=1;i<Question.GetMaxQuestions();i++)
-            {
-               var reader = db.ExecuteReader("SELECT * FROM questions WHERE id = " + i);
-                if (reader.Read())
-                {
-                    values[i, 0] = reader["id"];
-                    values[i, 1] = reader["content"].ToString();
-                    values[i, 2] = reader["ordinal"];
-                    values[i, 3] = reader["image_url"].ToString();
-                    values[i, 4] = reader["type_id"];
-                    values[i, 5] = reader["category_id"];
-                    values[i, 6] = reader["parent_id"];                   
+        //    for (int i=1;i<Question.GetMaxQuestions();i++)
+        //    {
+        //       var reader = db.ExecuteReader("SELECT * FROM questions WHERE id = " + i);
+        //        if (reader.Read())
+        //        {
+        //            values[i, 0] = reader["id"];
+        //            values[i, 1] = reader["content"].ToString();
+        //            values[i, 2] = reader["ordinal"];
+        //            values[i, 3] = reader["image_url"].ToString();
+        //            values[i, 4] = reader["type_id"];
+        //            values[i, 5] = reader["category_id"];
+        //            values[i, 6] = reader["parent_id"];                   
 
-                    reader.Close();
-                }
+        //            reader.Close();
+        //        }
+        //    }
+
+        //    db.Close();
+
+        //    return values;
+        //}
+
+        public static Question[] List()
+        {
+            Db db = new Db();
+            var reader = db.ExecuteReader("select id from questions order by ordinal asc");
+            ArrayList responseList = new ArrayList();
+
+            while (reader.Read())
+            {
+                Question currentQuestion = Question.Load((int)reader["id"]);
+                responseList.Add(currentQuestion);
             }
 
+            reader.Close();
             db.Close();
-
-            return values;
+            return (Question[])responseList.ToArray(typeof(Question));
         }
     }
 }

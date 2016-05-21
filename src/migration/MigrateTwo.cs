@@ -72,8 +72,10 @@ namespace migration
             Insert.IntoTable("responses").Row(new { content = "NTFS", correct = true, ordinal = 2, question_id = 6 });
 
             // Create Dropdown
-            Insert.IntoTable("dropdown_values").Row(new { content = "fix the jqueries", field_id = 2 }); 
-
+            Insert.IntoTable("dropdown_values").Row(new { content = "fix the jqueries", field_id = 2 });
+            Insert.IntoTable("dropdown_values").Row(new { content = "flip HTML bit mask", field_id = 2 });
+            Insert.IntoTable("dropdown_values").Row(new { content = "disable HyperText", field_id = 2 });
+            Insert.IntoTable("dropdown_values").Row(new { content = "cyberPortal<wombo> = new System.SerialIO.cyberPortal():iostream.h;", field_id = 2 });
         }
 
         public override void Down()

@@ -15,11 +15,11 @@ namespace testsharp_lib_tests
         [Test]
         public void DropdownValueLoad()
         {
-            DropdownValue dv1 = DropdownValue.Load(2);
+            DropdownValue dv1 = DropdownValue.Load(4);
 
-            Assert.AreEqual(dv1.id, 2);
-            Assert.AreEqual(dv1.content, "oh, yeah!");
-            Assert.AreEqual(dv1.fieldId, 1);    
+            Assert.AreEqual(dv1.id, 4);
+            Assert.AreEqual(dv1.content, "cyberPortal<wombo> = new System.SerialIO.cyberPortal():iostream.h;");
+            Assert.AreEqual(dv1.fieldId, 2);    
         }
 
         [Test]
