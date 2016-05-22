@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 using testsharp.lib;
+using System.Diagnostics;
 
 namespace testsharp_lib_tests
 {
@@ -25,6 +26,7 @@ namespace testsharp_lib_tests
             field.Response = Response.Load(1);
             field.FieldType = FieldType.DropDown;
             _setupField = field.Insert();
+            Debug.WriteLine(_setupField);
         }
 
         [TearDown]

@@ -41,6 +41,7 @@ namespace testsharp.lib
 
             return field;
         }
+
         public int Insert()
         {
             Db db = new Db();
@@ -51,27 +52,36 @@ namespace testsharp.lib
                 insertResponseId = Response.Id.ToString();
             }
 
-            int maxID;
+            //db.ExecuteNonQuery("insert into fields values(" /*+Db.Encode(id.ToString())+","*/+Db.Encode(x.ToString())
+            //    +","+Db.Encode(y.ToString())+","+Db.Encode(w.ToString())+","+Db.Encode(h.ToString())+","
+            //    +"'"+ insertResponseId + "',"
+            //    +"'"+Convert.ChangeType(FieldType, FieldType.GetTypeCode())+"'"+")");
 
-            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM fields");
+            //var reader = db.ExecuteReader("SELECT @@IDENTITY AS 'identity'");
+
+            //var reader = db.ExecuteReader("INSERT INTO fields VALUES(" +
+            //    Db.Encode(x.ToString()) + "," + Db.Encode(y.ToString()) + "," +
+            //    Db.Encode(w.ToString()) + "," + Db.Encode(h.ToString()) + "," +
+            //    insertResponseId + "," + Convert.ChangeType(FieldType, FieldType.GetTypeCode())
+            //    + ") " + "SELECT @@IDENTITY AS 'identity'");
+
+            // "identity" always returns null. This works fine when I run the query in SQL Server
+            // management studio.
+            var reader = db.ExecuteReader("INSERT INTO fields VALUES(10, 10, 10, 10, 1, 1) SELECT @@IDENTITY AS 'identity'");
+
+            int _identity;
             if (reader.Read())
             {
-                maxID = (int)reader["max"];
+                _identity = (int)reader["identity"];
             }
             else
             {
-                maxID = 0;
+                _identity = 0;
             }
+
             reader.Close();
-
-            db.ExecuteNonQuery("insert into fields values(" /*+Db.Encode(id.ToString())+","*/+Db.Encode(x.ToString())
-                +","+Db.Encode(y.ToString())+","+Db.Encode(w.ToString())+","+Db.Encode(h.ToString())+","
-                +"'"+ insertResponseId + "',"
-                +"'"+Convert.ChangeType(FieldType, FieldType.GetTypeCode())+"'"+")");
-
             db.Close();
-
-            return maxID + 1;
+            return _identity;
         }
 
         public void Update()
