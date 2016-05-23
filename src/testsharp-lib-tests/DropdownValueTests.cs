@@ -53,5 +53,11 @@ namespace testsharp_lib_tests
             dv.id = 1;
             dv.Delete();
         }
+
+        [Test]
+        public void DropdownValueList()
+        {
+            DropdownValue[] myDropdownValue = DropdownValue.List();
+        }
     }
 }

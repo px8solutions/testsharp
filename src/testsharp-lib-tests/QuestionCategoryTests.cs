@@ -44,5 +44,12 @@ namespace testsharp_lib_tests
             qc.Id = 4;
             qc.Delete();
         }
+
+        [Test]
+        public void QuestionCategoryList()
+        {
+            QuestionCategories[] myQuestionCategories = QuestionCategories.List();
+
+        }
     }
 }

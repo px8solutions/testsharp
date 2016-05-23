@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Collections;
 
 namespace testsharp.lib
 {
@@ -75,5 +76,23 @@ namespace testsharp.lib
 
             db.Close();
         }
+
+        public static DropdownValue[] List()
+        {
+            Db db = new Db();
+            var reader = db.ExecuteReader("select id from fields order by id asc");
+            ArrayList responseList = new ArrayList();
+
+            while (reader.Read())
+            {
+                DropdownValue currentQuestion = DropdownValue.Load((int)reader["id"]);
+                responseList.Add(currentQuestion);
+            }
+
+            reader.Close();
+            db.Close();
+            return (DropdownValue[])responseList.ToArray(typeof(DropdownValue));
+        }
+
     }
 }

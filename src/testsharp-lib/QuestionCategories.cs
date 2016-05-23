@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -98,26 +99,43 @@ namespace testsharp.lib
             }
         }
 
-        public static object[,] List()
+        //public static object[,] List()
+        //{
+        //    object[,] values = new object[QuestionCategories.GetMax(), 2];
+        //    Db db = new Db();
+
+        //    for (int i = 1; i < QuestionCategories.GetMax(); i++)
+        //    {
+        //        var reader = db.ExecuteReader("SELECT * FROM question_categories WHERE id = " + i);
+        //        if (reader.Read())
+        //        {
+        //            values[i, 0] = reader["id"];
+        //            values[i, 1] = reader["name"].ToString();
+
+        //            reader.Close();
+        //        }
+        //    }
+
+        //    db.Close();
+
+        //    return values;
+        //}
+
+        public static QuestionCategories[] List()
         {
-            object[,] values = new object[QuestionCategories.GetMax(), 2];
             Db db = new Db();
+            var reader = db.ExecuteReader("select id from question_categories order by ordinal asc");
+            ArrayList responseList = new ArrayList();
 
-            for (int i = 1; i < QuestionCategories.GetMax(); i++)
+            while (reader.Read())
             {
-                var reader = db.ExecuteReader("SELECT * FROM question_categories WHERE id = " + i);
-                if (reader.Read())
-                {
-                    values[i, 0] = reader["id"];
-                    values[i, 1] = reader["name"].ToString();
-
-                    reader.Close();
-                }
+                QuestionCategories currentQuestion = QuestionCategories.Load((int)reader["id"]);
+                responseList.Add(currentQuestion);
             }
 
+            reader.Close();
             db.Close();
-
-            return values;
+            return (QuestionCategories[])responseList.ToArray(typeof(QuestionCategories));
         }
     }
 
