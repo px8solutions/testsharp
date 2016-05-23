@@ -124,7 +124,7 @@ namespace testsharp.lib
         public static QuestionCategories[] List()
         {
             Db db = new Db();
-            var reader = db.ExecuteReader("select id from question_categories order by ordinal asc");
+            var reader = db.ExecuteReader("select id from question_categories order by id asc");
             ArrayList responseList = new ArrayList();
 
             while (reader.Read())
