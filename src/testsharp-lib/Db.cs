@@ -65,6 +65,7 @@ namespace testsharp.lib
             //caller must close reader
             _cmd = _con.CreateCommand();
             _cmd.CommandText = sql;
+            _cmd.Parameters.Add("@ID", System.Data.SqlDbType.Int, 32).Direction = System.Data.ParameterDirection.Output;
             return _cmd.ExecuteReader();
         }
 

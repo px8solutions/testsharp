@@ -52,10 +52,12 @@ namespace testsharp.lib
                 insertResponseId = Response.Id.ToString();
             }
 
-            //db.ExecuteNonQuery("insert into fields values(" /*+Db.Encode(id.ToString())+","*/+Db.Encode(x.ToString())
-            //    +","+Db.Encode(y.ToString())+","+Db.Encode(w.ToString())+","+Db.Encode(h.ToString())+","
-            //    +"'"+ insertResponseId + "',"
-            //    +"'"+Convert.ChangeType(FieldType, FieldType.GetTypeCode())+"'"+")");
+            db.ExecuteNonQuery("insert into fields values(" /*+Db.Encode(id.ToString())+","*/+ Db.Encode(x.ToString())
+                + "," + Db.Encode(y.ToString()) + "," + Db.Encode(w.ToString()) + "," + Db.Encode(h.ToString()) + ","
+                + "'" + insertResponseId + "',"
+                + "'" + Convert.ChangeType(FieldType, FieldType.GetTypeCode()) + "'" + ")");
+
+            db.Close();
 
             //var reader = db.ExecuteReader("SELECT @@IDENTITY AS 'identity'");
 
@@ -67,11 +69,13 @@ namespace testsharp.lib
 
             // "identity" always returns null. This works fine when I run the query in SQL Server
             // management studio.
-            var reader = db.ExecuteReader("INSERT INTO fields VALUES(10, 10, 10, 10, 1, 1) SELECT @@IDENTITY AS 'identity'");
-
+            //var reader = db.ExecuteReader("INSERT INTO fields VALUES(10, 10, 10, 10, 1, 1) SELECT @@IDENTITY AS 'identity'");
+            Db db2 = new Db();
+            var reader = db2.ExecuteReader("SELECT IDENT_CURRENT('fields') as 'identity'");
             int _identity;
             if (reader.Read())
             {
+               
                 _identity = (int)reader["identity"];
             }
             else
@@ -80,7 +84,7 @@ namespace testsharp.lib
             }
 
             reader.Close();
-            db.Close();
+            db2.Close();
             return _identity;
         }
 
