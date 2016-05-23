@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace testsharp.lib
 {
@@ -60,23 +61,12 @@ namespace testsharp.lib
 
             db.Close();
 
-            //var reader = db.ExecuteReader("SELECT @@IDENTITY AS 'identity'");
+            var reader = db.ExecuteReader("SELECT @@IDENTITY AS 'identity'");
 
-            //var reader = db.ExecuteReader("INSERT INTO fields VALUES(" +
-            //    Db.Encode(x.ToString()) + "," + Db.Encode(y.ToString()) + "," +
-            //    Db.Encode(w.ToString()) + "," + Db.Encode(h.ToString()) + "," +
-            //    insertResponseId + "," + Convert.ChangeType(FieldType, FieldType.GetTypeCode())
-            //    + ") " + "SELECT @@IDENTITY AS 'identity'");
-
-            // "identity" always returns null. This works fine when I run the query in SQL Server
-            // management studio.
-            //var reader = db.ExecuteReader("INSERT INTO fields VALUES(10, 10, 10, 10, 1, 1) SELECT @@IDENTITY AS 'identity'");
-            Db db2 = new Db();
-            var reader = db2.ExecuteReader("SELECT IDENT_CURRENT('fields') as 'identity'");
             int _identity;
             if (reader.Read())
             {
-               
+
                 _identity = (int)reader["identity"];
             }
             else
@@ -85,7 +75,7 @@ namespace testsharp.lib
             }
 
             reader.Close();
-            db2.Close();
+
             return _identity;
         }
 
@@ -112,7 +102,7 @@ namespace testsharp.lib
         public static Field[] List()
         {
             Db db = new Db();
-            var reader = db.ExecuteReader("select id from fields order by ordinal asc");
+            var reader = db.ExecuteReader("select id from fields order by id asc");
             ArrayList responseList = new ArrayList();
 
             while (reader.Read())
