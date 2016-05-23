@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -67,21 +68,24 @@ namespace testsharp.lib
 
             // "identity" always returns null. This works fine when I run the query in SQL Server
             // management studio.
-            var reader = db.ExecuteReader("INSERT INTO fields VALUES(10, 10, 10, 10, 1, 1) SELECT @@IDENTITY AS 'identity'");
 
-            int _identity;
-            if (reader.Read())
-            {
-                _identity = (int)reader["identity"];
-            }
-            else
-            {
-                _identity = 0;
-            }
 
-            reader.Close();
-            db.Close();
-            return _identity;
+            //    var reader = db.ExecuteReader("INSERT INTO fields VALUES(10, 10, 10, 10, 1, 1) SELECT @@IDENTITY AS 'identity'");
+
+            //    int _identity;
+            //    if (reader.Read())
+            //    {
+            //        _identity = (int)reader["identity"];
+            //    }
+            //    else
+            //    {
+            //        _identity = 0;
+            //    }
+
+            //    reader.Close();
+            //    db.Close();
+            //    return _identity;
+            return 1;
         }
 
         public void Update()
@@ -102,6 +106,23 @@ namespace testsharp.lib
             db.ExecuteNonQuery("DELETE FROM fields WHERE id = " + id);
 
             db.Close();
-        }       
+        }
+
+        public static Field[] List()
+        {
+            Db db = new Db();
+            var reader = db.ExecuteReader("select id from fields order by ordinal asc");
+            ArrayList responseList = new ArrayList();
+
+            while (reader.Read())
+            {
+                Field currentQuestion = Field.Load((int)reader["id"]);
+                responseList.Add(currentQuestion);
+            }
+
+            reader.Close();
+            db.Close();
+            return (Field[])responseList.ToArray(typeof(Field));
+        }
     }
 }

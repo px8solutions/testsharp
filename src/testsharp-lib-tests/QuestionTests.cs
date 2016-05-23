@@ -80,9 +80,11 @@ namespace testsharp_lib_tests
         [Test]
         public void QuestionList()
         {
-            var a =Question.GetMaxQuestions();
-            Question.List();
-            
+            //var a =Question.GetMaxQuestions();
+          Question[] myQuestionlist=  Question.List();
+            Question[] myQuestionlist2 = myQuestionlist;
+
+
         }
     }
 }

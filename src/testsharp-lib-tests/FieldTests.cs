@@ -84,5 +84,11 @@ namespace testsharp_lib_tests
             field.Delete();
         }
         */
+
+        [Test]
+        public void FieldList()
+        {
+            Field[] myFieldList = Field.List();
+        }
     }
 }
