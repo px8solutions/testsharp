@@ -39,24 +39,22 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            int maxID;
+            var reader = db.ExecuteReader("INSERT INTO dropdown_values VALUES (" + Db.Encode(content) + "," + fieldId + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
 
-            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM dropdown_values");
+            int identity;
             if (reader.Read())
             {
-                maxID = (int)reader["max"];
+                identity = (int)reader["ident"];
             }
             else
             {
-                maxID = 0;
+                identity = 0;
             }
+
             reader.Close();
-
-            db.ExecuteNonQuery("INSERT INTO dropdown_values VALUES ("/* + id.ToString() + ","*/ + Db.Encode(content) + "," + fieldId.ToString() + ")");
-
             db.Close();
 
-            return maxID + 1;
+            return identity;
         }
 
         public void Update()

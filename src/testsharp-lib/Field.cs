@@ -53,30 +53,24 @@ namespace testsharp.lib
             {
                 insertResponseId = Response.Id.ToString();
             }
+            
+            // I know Joe said we did not need the "as 'ident'" on the end of the query, but I can't remember why.
+            var reader = db.ExecuteReader("insert into fields values(" + x + "," + y + "," + w + "," + h + "," + insertResponseId + "," + (int)FieldType + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
 
-            db.ExecuteNonQuery("insert into fields values(" /*+Db.Encode(id.ToString())+","*/+ Db.Encode(x.ToString())
-                + "," + Db.Encode(y.ToString()) + "," + Db.Encode(w.ToString()) + "," + Db.Encode(h.ToString()) + ","
-                + "'" + insertResponseId + "',"
-                + "'" + Convert.ChangeType(FieldType, FieldType.GetTypeCode()) + "'" + ")");
-
-            db.Close();
-
-            var reader = db.ExecuteReader("SELECT @@IDENTITY AS 'identity'");
-
-            int _identity;
+            int identity;
             if (reader.Read())
             {
-
-                _identity = (int)reader["identity"];
+                identity = (int)reader["ident"];
             }
             else
             {
-                _identity = 0;
+                identity = 0;
             }
 
             reader.Close();
+            db.Close();
 
-            return _identity;
+            return identity;
         }
 
         public void Update()

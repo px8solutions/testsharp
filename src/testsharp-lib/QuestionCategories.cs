@@ -48,15 +48,26 @@ namespace testsharp.lib
         }
 
 
-        public void Insert()
+        public int Insert()
         {
             Db db = new Db();
+            
+            var reader = db.ExecuteReader("insert into question_categories values (" + Db.Encode(Name) + ")");
 
-            //need id on insert
-            db.ExecuteNonQuery("insert into question_categories values (" + Db.Encode(Name) + ")");
+            int identity;
+            if (reader.Read())
+            {
+                identity = (int)reader["ident"];
+            }
+            else
+            {
+                identity = 0;
+            }
 
+            reader.Close();
             db.Close();
 
+            return identity;
         }
 
         public void Update()

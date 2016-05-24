@@ -25,12 +25,11 @@ namespace testsharp_lib_tests
         [Test]
         public void DropdownValueInsert()
         {
-            DropdownValue dv = DropdownValue.Load(2);
+            DropdownValue dv = new DropdownValue();
 
-            dv.id = 1;
             dv.content = "I've been dropped down.";
-            dv.fieldId = 1;
-            Debug.WriteLine(dv.Insert());
+            dv.fieldId = 2;
+            dv.Insert();
         }
 
         [Test]

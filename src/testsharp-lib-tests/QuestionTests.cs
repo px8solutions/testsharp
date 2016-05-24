@@ -38,7 +38,7 @@ namespace testsharp_lib_tests
             myQuestion.QuestionType = QuestionType.MultipleChoiceMultiple;
             myQuestion.Category = QuestionCategories.Load(1);
             myQuestion.Parent = Question.Load(5);
-            myQuestion.ImageURL = null;
+            myQuestion.ImageURL = "NULL";
             myQuestion.Insert();
 
             // match inserted data

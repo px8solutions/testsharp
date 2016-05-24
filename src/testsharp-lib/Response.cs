@@ -42,33 +42,29 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            int maxID;
-
             string insertQuestionId = "1";
             if (Question!=null)
             {
                 insertQuestionId = Question.Id.ToString();
             }
 
-            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM responses");
+            var reader = db.ExecuteReader("insert into Responses (content,correct,ordinal,question_id) values ("+ Db.Encode(Content.ToString()) 
+                + "," + Db.Encode(Correct.ToString()) + "," + Ordinal + "," + insertQuestionId + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
+
+            int identity;
             if (reader.Read())
             {
-                maxID = (int)reader["max"];
+                identity = (int)reader["ident"];
             }
             else
             {
-                maxID = 0;
+                identity = 0;
             }
+
             reader.Close();
-
-            //db.ExecuteNonQuery("insert into Responses values (" + Id.ToString() + ",'" + Content + ",'" +Correct.ToString()+"','"+Ordinal.ToString()+"',"+ insertQuestionId + "')");
-
-            db.ExecuteNonQuery("insert into Responses (content,correct,ordinal,question_id) values ("+ Db.Encode(Content.ToString()) 
-                +","+Db.Encode(Correct.ToString()) + "," + Db.Encode(Ordinal.ToString()) + "," + Db.Encode(insertQuestionId) + ")");
-
             db.Close();
 
-            return maxID + 1;
+            return identity;
         }
 
         public void Update()

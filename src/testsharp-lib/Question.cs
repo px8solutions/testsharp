@@ -93,31 +93,24 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            int maxID;
+            var reader = db.ExecuteReader("insert into questions values (" + Db.Encode(Content.ToString()) + ","
+                + Ordinal.ToString() + "," + Db.Encode(ImageURL.ToString()) + "," + Convert.ChangeType(QuestionType, QuestionType.GetTypeCode()) 
+                + "," + Category.Id + "," + Parent.Id + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
 
-            var reader = db.ExecuteReader("SELECT MAX(id) AS 'max' FROM questions");
+            int identity;
             if (reader.Read())
             {
-                maxID = (int)reader["max"];
+                identity = (int)reader["ident"];
             }
             else
             {
-                maxID = 0;
+                identity = 0;
             }
+
             reader.Close();
-
-            if (ImageURL == null)
-            {
-                ImageURL = "NULL";
-            }
-
-            db.ExecuteNonQuery("insert into questions values (" + Db.Encode(Content.ToString()) + ","
-                + Ordinal.ToString() + "," + Db.Encode(ImageURL.ToString()) + "," + Convert.ChangeType(QuestionType, QuestionType.GetTypeCode()) 
-                + "," + Category.Id.ToString() + "," + Parent.Id.ToString() + ")");
-
             db.Close();
 
-            return maxID + 1;
+            return identity;
         }
 
         public void Update()
