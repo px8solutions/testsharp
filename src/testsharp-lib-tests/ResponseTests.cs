@@ -56,5 +56,11 @@ namespace testsharp_lib_tests
             response.Id = 19;
             response.Delete();
         }
+
+        [Test]
+        public void ResponseList()
+        {
+            Debug.WriteLine("List: " + Response.List());
+        }
     }
 }

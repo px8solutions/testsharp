@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -84,6 +85,23 @@ namespace testsharp.lib
             db.ExecuteNonQuery("DELETE FROM responses WHERE id = " + Id);
 
             db.Close();
+        }
+        
+        public static Response[] List()
+        {
+            Db db = new Db();
+            var reader = db.ExecuteReader("SELECT id FROM responses ORDER BY id ASC");
+            ArrayList list = new ArrayList();
+
+            while (reader.Read())
+            {
+                Response response = Response.Load((int)reader["id"]);
+                list.Add(response);
+            }
+
+            reader.Close();
+            db.Close();
+            return (Response[])list.ToArray(typeof(Response));
         }       
     }
 }
