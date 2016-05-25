@@ -15,9 +15,9 @@
             @{
                 for (int i = 1; i <= testsharp.lib.Question.GetMaxQuestions() - 1; i++)
                 {
+                    var url = testsharp.Controllers.AdminController.QuestionContent[i];
                     ViewBag.i = i + ". " + testsharp.Controllers.AdminController.QuestionContent[i];
-                    // I have no idea if this is the right way to do this, but I'm doin' it.
-                    <a href="~/Admin/Index">@ViewBag.i</a><br />
+                    <a href="~/Admin/Index?q=@HttpUtility.UrlEncode(url)">@ViewBag.i</a><br />
                 }
             }
 
@@ -25,7 +25,8 @@
 
         <div class="nine columns">
 
-            <p> hey there</p>
+            <p>hey there</p>
+            <p>@HttpContext.Current.Request.QueryString["q"]</p>
 
         </div>
 
