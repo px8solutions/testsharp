@@ -15,9 +15,9 @@
             @{
                 for (int i = 1; i <= testsharp.lib.Question.GetMaxQuestions() - 1; i++)
                 {
-                    var url = testsharp.Controllers.AdminController.QuestionContent[i];
+                    var url = testsharp.Controllers.AdminController.QuestionID[i];
                     ViewBag.i = i + ". " + testsharp.Controllers.AdminController.QuestionContent[i];
-                    <a href="~/Admin/Index?q=@HttpUtility.UrlEncode(url)">@ViewBag.i</a><br />
+                    <a href="~/Admin/Index?q=@HttpUtility.UrlEncode(url.ToString())">@ViewBag.i</a><br />
                 }
             }
 
@@ -26,8 +26,13 @@
         <div class="nine columns">
 
             <p>hey there</p>
-            <p>@HttpContext.Current.Request.QueryString["q"]</p>
+            @{
+                int loadnum;
+                Int32.TryParse(HttpContext.Current.Request.QueryString["q"], out loadnum);
+                testsharp.lib.Question question = testsharp.lib.Question.Load(loadnum);
 
+                <p>@question.Content</p>
+            }
         </div>
 
     </div>
