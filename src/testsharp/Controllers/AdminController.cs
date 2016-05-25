@@ -23,5 +23,11 @@ namespace testsharp.Controllers
 
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Index()
+        {
+            //Question.Load(ViewContext.RouteData.Values["q"]);
+        }
     }
 }
