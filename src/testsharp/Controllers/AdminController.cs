@@ -23,6 +23,7 @@ namespace testsharp.Controllers
 
             int myQuestion = 0;
             Int32.TryParse(Request.QueryString["q"], out myQuestion);
+
             if (myQuestion != 0 && Request.QueryString["newcontent"] != null)
             {
                 Question thisQuestion = Question.Load(myQuestion);
