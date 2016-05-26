@@ -52,7 +52,7 @@ namespace testsharp.lib
         {
             Db db = new Db();
             
-            var reader = db.ExecuteReader("insert into question_categories values (" + Db.Encode(Name) + ")");
+            var reader = db.ExecuteReader("insert into question_categories (name) values (" + Db.Encode(Name) + ")");
 
             int identity;
             if (reader.Read())
