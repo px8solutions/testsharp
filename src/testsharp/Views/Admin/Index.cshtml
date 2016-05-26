@@ -36,6 +36,7 @@
                 <form>
                     <p>Update Content:</p>
                     <input type="text" name="newcontent" />
+                    <input type="hidden" name="q" value="@Request.QueryString["q"]" />
                     <input type="submit" value="Update Question Content"/>
                 </form>
             }
