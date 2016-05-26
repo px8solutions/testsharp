@@ -13,7 +13,7 @@ namespace testsharp.Controllers
         public static int[] QuestionID = new int[Question.GetMaxQuestions()];
 
         // GET: Admin
-        public ActionResult Index()
+        public ActionResult Index(FormCollection Form)
         {
             for (int i = 1; i <= Question.GetMaxQuestions() - 1; i++)
             {
@@ -21,16 +21,28 @@ namespace testsharp.Controllers
                 QuestionID[i] = Question.Load(i).Id;
             }
 
+            int myQuestion = 0;
+            Int32.TryParse(Request.QueryString["q"], out myQuestion);
+            if (myQuestion != 0 && Request.QueryString["newcontent"] != null)
+            {
+                Question thisQuestion = Question.Load(myQuestion);
+                thisQuestion.Content = Request.QueryString["newcontent"];
+                thisQuestion.Update();
+            }
+
+
+
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Index(FormCollection Form)
-        {
-            //Question.Load(ViewContext.RouteData.Values["q"]);
-            string question = Request.QueryString["q"];
-
-            return View();
-        }
+        //[HttpGet]
+        //public ActionResult Index()
+        //{
+        //    int myQuestion = 0;
+        //    Int32.TryParse(Request.QueryString["q"], out myQuestion);
+        //    Question.Load(myQuestion);
+            
+        //    return View();
+        //}
     }
 }
