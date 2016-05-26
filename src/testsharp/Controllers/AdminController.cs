@@ -28,6 +28,8 @@ namespace testsharp.Controllers
         public ActionResult Index(FormCollection Form)
         {
             //Question.Load(ViewContext.RouteData.Values["q"]);
+            string question = Request.QueryString["q"];
+
             return View();
         }
     }
