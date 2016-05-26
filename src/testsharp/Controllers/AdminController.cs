@@ -19,6 +19,7 @@ namespace testsharp.Controllers
             {
                 QuestionContent[i] = Question.Load(i).Content;
                 QuestionID[i] = Question.Load(i).Id;
+
             }
 
             int myQuestion = 0;
@@ -31,19 +32,8 @@ namespace testsharp.Controllers
                 thisQuestion.Update();
             }
 
-
-
             return View();
         }
 
-        //[HttpGet]
-        //public ActionResult Index()
-        //{
-        //    int myQuestion = 0;
-        //    Int32.TryParse(Request.QueryString["q"], out myQuestion);
-        //    Question.Load(myQuestion);
-            
-        //    return View();
-        //}
     }
 }
