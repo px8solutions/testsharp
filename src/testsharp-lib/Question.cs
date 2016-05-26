@@ -25,7 +25,7 @@ namespace testsharp.lib
         public static Question Load(int id)
         {
             Db db = new Db(); //questions
-            //Db db2 = new Db(); //responses
+            
             
 
             var reader = db.ExecuteReader("select * from questions where id=" + id.ToString());
@@ -50,37 +50,10 @@ namespace testsharp.lib
                     question.ImageURL = (string)reader["image_url"];
                 }
 
-                // get all responses for each question and add to the responses<> list
+                
   
              }
-                /*
-                var reader2 = db2.ExecuteReader("select * from responses where question_id=" + id.ToString());
                 
-                 Response response = new Response();
-
-
-                int resIndex = 0;
-                while (reader2.Read())
-                {
-                    response.Id = (int)reader2["id"];
-                    response.Content = (string)reader2["content"];
-                    response.Correct = (Boolean)reader2["correct"];
-                    response.Ordinal = (int)reader2["ordinal"];
-                // response.Question = Question.Load((int)reader2["question_id"]);
-                //response.Question = new Question();
-
-
-               // question.Responses.Add(response);
-
-                    resIndex++;
-                }
-                reader2.Close();
-            
-
-            // responses reader
-            
-            db2.Close();
-            */
 
             // questions reader
             reader.Close();
@@ -155,32 +128,6 @@ namespace testsharp.lib
             db.Close();
         }
 
-        //public static object[,] List()
-        //{
-        //    object[,] values = new object[Question.GetMaxQuestions(),7];
-        //    Db db = new Db();
-            
-        //    for (int i=1;i<Question.GetMaxQuestions();i++)
-        //    {
-        //       var reader = db.ExecuteReader("SELECT * FROM questions WHERE id = " + i);
-        //        if (reader.Read())
-        //        {
-        //            values[i, 0] = reader["id"];
-        //            values[i, 1] = reader["content"].ToString();
-        //            values[i, 2] = reader["ordinal"];
-        //            values[i, 3] = reader["image_url"].ToString();
-        //            values[i, 4] = reader["type_id"];
-        //            values[i, 5] = reader["category_id"];
-        //            values[i, 6] = reader["parent_id"];                   
-
-        //            reader.Close();
-        //        }
-        //    }
-
-        //    db.Close();
-
-        //    return values;
-        //}
 
         public static Question[] List()
         {

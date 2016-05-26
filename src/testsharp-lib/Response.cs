@@ -30,8 +30,8 @@ namespace testsharp.lib
                 response.Content = (string)reader["content"];
                 response.Correct = (Boolean)reader["correct"];
                 response.Ordinal = (int)reader["ordinal"];
-                //response.Question = Question.Load((int)reader["question_id"]);
-                response.Question = new Question();
+                response.Question = Question.Load((int)reader["question_id"]);
+                
             }
             reader.Close();
             db.Close();
@@ -43,14 +43,9 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            string insertQuestionId = "1";
-            if (Question!=null)
-            {
-                insertQuestionId = Question.Id.ToString();
-            }
 
             var reader = db.ExecuteReader("insert into Responses (content,correct,ordinal,question_id) values ("+ Db.Encode(Content.ToString()) 
-                + "," + Db.Encode(Correct.ToString()) + "," + Ordinal + "," + insertQuestionId + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
+                + "," + Db.Encode(Correct.ToString()) + "," + Ordinal + "," + Question.Id.ToString() + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
 
             int identity;
             if (reader.Read())
