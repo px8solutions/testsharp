@@ -25,9 +25,10 @@ namespace testsharp.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index()
+        public ActionResult Index(FormCollection Form)
         {
             //Question.Load(ViewContext.RouteData.Values["q"]);
+            return View();
         }
     }
 }

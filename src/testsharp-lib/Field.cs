@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data.SqlClient;
 
 namespace testsharp.lib
 {
@@ -48,26 +47,9 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            string insertResponseId = "1";
-            if (Response != null)
-            {
-                insertResponseId = Response.Id.ToString();
-            }
-            
-            // I know Joe said we did not need the "as 'ident'" on the end of the query, but I can't remember why.
-            var reader = db.ExecuteReader("insert into fields values(" + x + "," + y + "," + w + "," + h + "," + insertResponseId + "," + (int)FieldType + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
+            db.ExecuteNonQuery("INSERT INTO fields(x,y,w,h,response_id,field_type_id) VALUES(" + x + "," + y + "," + w + "," + h + "," + Response.Id + "," + (int)FieldType + ")");
+            int identity = db.ExecuteScalar("SELECT CAST(SCOPE_IDENTITY() AS int)");
 
-            int identity;
-            if (reader.Read())
-            {
-                identity = (int)reader["ident"];
-            }
-            else
-            {
-                identity = 0;
-            }
-
-            reader.Close();
             db.Close();
 
             return identity;

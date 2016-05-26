@@ -76,6 +76,13 @@ namespace testsharp.lib
             return _cmd.ExecuteNonQuery();
         }
 
+        public int ExecuteScalar(string sql)
+        {
+            _cmd = _con.CreateCommand();
+            _cmd.CommandText = sql;
+            return (int)_cmd.ExecuteScalar();
+        }
+
         public void Close()
         {
             //no need to close or dispose SqlCommand
