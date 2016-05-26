@@ -93,7 +93,7 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
-            var reader = db.ExecuteReader("insert into questions values (" + Db.Encode(Content.ToString()) + ","
+            var reader = db.ExecuteReader("insert into questions (content,ordinal,image_url,type_id,category_id,parent_id) values (" + Db.Encode(Content.ToString()) + ","
                 + Ordinal.ToString() + "," + Db.Encode(ImageURL.ToString()) + "," + Convert.ChangeType(QuestionType, QuestionType.GetTypeCode()) 
                 + "," + Category.Id + "," + Parent.Id + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
 

@@ -39,10 +39,24 @@ namespace testsharp.lib
         {
             Db db = new Db();
 
+<<<<<<< HEAD
             db.ExecuteNonQuery("INSERT INTO dropdown_values(content, field_id) VALUES(" + Db.Encode(content) + "," + fieldId + ")");
             int identity = db.ExecuteScalar("SELECT CAST(SCOPE_IDENTITY() AS int)");
 
             db.Close();
+=======
+            var reader = db.ExecuteReader("INSERT INTO dropdown_values (content,field_id) VALUES (" + Db.Encode(content) + "," + fieldId + ") SELECT CONVERT(INT, @@IDENTITY) as 'ident'");
+
+            int identity;
+            if (reader.Read())
+            {
+                identity = (int)reader["ident"];
+            }
+            else
+            {
+                identity = 0;
+            }
+>>>>>>> 2c647f8781cc9e4bc44c2a5b0e85f007eb8b4195
 
             return identity;
         }
