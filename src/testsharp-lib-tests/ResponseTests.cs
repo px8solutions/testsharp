@@ -42,6 +42,7 @@ namespace testsharp_lib_tests
             myResponse.Content = "test";
             myResponse.Correct = true;
             myResponse.Ordinal = 108;
+            myResponse.Question = Question.Load(4);
             Debug.WriteLine(myResponse.Insert());
 
             //myResponse.Question = Questions.Load(1);
