@@ -25,11 +25,23 @@ namespace testsharp.Controllers
             int myQuestion = 0;
             Int32.TryParse(Request.QueryString["q"], out myQuestion);
 
-            if (myQuestion != 0 && Request.QueryString["newcontent"] != null)
+        
+            if (myQuestion != 0)
             {
                 Question thisQuestion = Question.Load(myQuestion);
-                thisQuestion.Content = Request.QueryString["newcontent"];
-                thisQuestion.Update();
+
+                ViewBag.responses = thisQuestion.Responses;
+                ViewBag.responses = new List<string>() { "a", "b", "c" };
+
+
+                if (Request.QueryString["newcontent"] != null)
+                {
+                    thisQuestion.Content = Request.QueryString["newcontent"];
+                    thisQuestion.Update();
+                }
+
+
+
             }
 
             return View();

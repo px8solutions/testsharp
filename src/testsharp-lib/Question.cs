@@ -129,21 +129,25 @@ namespace testsharp.lib
         }
 
 
-        public static Question[] List()
+      public static Question[] List()
         {
             Db db = new Db();
-            var reader = db.ExecuteReader("select id from questions order by ordinal asc");
-            ArrayList responseList = new ArrayList();
+
+            var reader = db.ExecuteReader("select * from questions order by ordinal");
+            ArrayList myQuestions = new ArrayList();
 
             while (reader.Read())
             {
-                Question currentQuestion = Question.Load((int)reader["id"]);
-                responseList.Add(currentQuestion);
+                myQuestions.Add(Question.Load((int)reader["id"]));    
             }
+            //Object[] qs = new Question[myQuestions.Count];
 
-            reader.Close();
-            db.Close();
-            return (Question[])responseList.ToArray(typeof(Question));
+            //for (int i = 0; i < myQuestions.Count; i++ )
+            //{
+            //    qs[i] = myQuestions[i];
+            //}
+            //return (Question[])qs ;
+            return (Question[]) myQuestions.ToArray(typeof(Question));
         }
     }
 }

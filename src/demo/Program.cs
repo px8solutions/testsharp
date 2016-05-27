@@ -13,6 +13,14 @@ namespace demo
         static void Main(string[] args)
         {
 
+            Question[] wow = Question.List();
+            foreach (Question question in wow)
+            {
+                Console.WriteLine(question.Id + " - " + question.Content);
+            }
+            
+
+
             QuestionCategories c = QuestionCategories.Load(1);
             c.Name = "bar!";
             c.Update();
