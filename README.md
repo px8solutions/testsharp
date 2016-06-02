@@ -1,1 +1,1 @@
-TestSharp an open source testing platform (very alpha).
+TestSharp an open source testing platform (very very alpha).
